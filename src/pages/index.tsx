@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+import Header from '../components/Header'
 
 import Page from '../components/Page'
 import Container from '../components/Container'
@@ -9,21 +10,10 @@ const IndexPage = () => (
   <IndexLayout>
     <Page>
       <Container>
-        <Link to="/toolbox" className="desktop_item">
-          <div></div>
-          <p>toolbox.exe</p>
-        </Link>
-
-        <Link to="/word_repo" className="desktop_item">
-          <div></div>
-          <p>word_repo.exe</p>
-        </Link>
-
-
-
+        <Header />
       </Container>
     </Page>
-  </IndexLayout >
+  </IndexLayout>
 )
 
 export default IndexPage
