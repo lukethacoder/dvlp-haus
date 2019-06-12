@@ -1,10 +1,15 @@
 import * as React from 'react'
 
-const Container: React.FunctionComponent<any> = ({
+interface ContainerProps {
+  customClass?: string;
+}
+
+const Container: React.FunctionComponent<ContainerProps> = ({
   children,
+  customClass
 }) => {
   return (
-    <div className="item__container">
+    <div className={`item__container ${customClass}`}>
       {children}
     </div>
   )

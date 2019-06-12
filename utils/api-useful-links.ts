@@ -6,17 +6,28 @@ export const usefulLinks: UsefulLinksProps[] = [
     id: '00001',
     name: 'Get the Font',
     url: 'https://www.getthefont.com',
-    desc: '',
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque mauris, varius eget risus et, consectetur condimentum orci. Quisque et dapibus nisi. Suspendisse finibus elementum hendrerit. Phasellus sagittis et ligula id faucibus. Nam blandit nisi elit, in aliquet nulla facilisis nec. Maecenas hendrerit porta urna rutrum efficitur.',
     category: 'General',
-    flames: 10,
+    flames: 4,
   },
   {
     id: '00002',
     name: 'JustRem',
     url: 'https://justrem.xyz',
-    desc: '',
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque mauris, varius eget risus et, consectetur condimentum orci. Quisque et dapibus nisi. Suspendisse finibus elementum hendrerit. Phasellus sagittis et ligula id faucibus. Nam blandit nisi elit, in aliquet nulla facilisis nec. Maecenas hendrerit porta urna rutrum efficitur.',
     category: 'General',
     flames: 100,
+  },
+  {
+    id: '00003',
+    name: 'GatsbyJS',
+    url: 'https://www.gatsbyjs.org/docs/',
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque mauris, varius eget risus et, consectetur condimentum orci. Quisque et dapibus nisi. Suspendisse finibus elementum hendrerit. Phasellus sagittis et ligula id faucibus. Nam blandit nisi elit, in aliquet nulla facilisis nec. Maecenas hendrerit porta urna rutrum efficitur.',
+    category: 'Docs',
+    flames: 8,
   },
 ];
 
@@ -33,6 +44,31 @@ export async function findData(id: number | string) {
   }
 
   return selected;
+}
+
+export async function getAllCategories() {
+  const allCategories: any = [...new Set(usefulLinks.map(link => link.category))];
+
+  if (!allCategories) {
+    throw new Error('Cannot find any categories');
+  }
+
+  return allCategories;
+}
+
+export async function findCategory(category?: string) {
+  const filteredLinks = category
+    ? usefulLinks.filter(data => data.category === category)
+    : usefulLinks;
+
+  if (!filteredLinks) {
+    throw new Error('Cannot find any links with that category');
+  }
+  if (!Array.isArray(usefulLinks)) {
+    throw new Error('Cannot find useful links');
+  }
+
+  return filteredLinks;
 }
 
 /** Calls a mock API which returns the above array to simulate "get all". */

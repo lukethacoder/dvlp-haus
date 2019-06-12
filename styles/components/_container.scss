@@ -3,4 +3,9 @@
   margin: 96px auto 0;
   background-color: $brand-tertiary;
   padding: 48px;
+  position: relative;
+  z-index: 10;
+  &.page__useful_links {
+    margin: 124px auto 0;
+  }
 }

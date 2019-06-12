@@ -1,6 +1,4 @@
 import * as React from 'react'
-import Link from 'next/link'
-
 import { UsefulLinksProps } from '../interfaces'
 
 type Props = {
@@ -8,11 +6,16 @@ type Props = {
 }
 
 const ListItem: React.FunctionComponent<Props> = ({ data }) => (
-  <Link href={`/detail?id=${data.id}`}>
-    <a>
+  <>
+    <a href={data.url}>
       {data.name}
     </a>
-  </Link>
+    <div className="links__meta">
+      <p> 🔥 {data.flames}</p>
+      <a href={data.url}>link</a>
+      <p>info</p>
+    </div>
+  </>
 )
 
 export default ListItem
