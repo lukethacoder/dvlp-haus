@@ -1,0 +1,57 @@
+// General Transition Values
+@mixin trans {
+  transition: all 0.3s ease;
+}
+// List Reset - remove padding/margins and bullet points
+@mixin list_reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@mixin bg_reset($size) {
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-position: center center;
+}
+@mixin bg_gradient($color_from, $color_two, $pos_from, $pos_to) {
+  background: $color_from;
+  background: -moz-linear-gradient($pos_from, $color_from 0%, $brand-primary 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    $pos_from,
+    $color_from 0%,
+    $color_two 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to $pos_to,
+    $color_from 0%,
+    $color_two 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color_from, endColorstr=$color_two,GradientType=0 ); /* IE6-9 */
+}
+// remove user select (blue boxes / odd outlines) when clicking items
+@mixin no_select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+// Target placeholders on form inputs
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::placeholder {
+    @content;
+  }
+}

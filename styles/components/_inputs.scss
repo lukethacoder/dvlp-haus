@@ -1,0 +1,45 @@
+.input_field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  position: relative;
+  .btn-settings {
+    position: absolute;
+    top: 8px;
+    right: 6px;
+    padding: 4px 16px;
+    border-radius: 8px 8px 0 0;
+    font-size: rem(10px);
+    background-color: $brand-secondary;
+    border: 1px solid $brand-primary;
+    z-index: 0;
+    cursor: pointer;
+  }
+  .input_field_container {
+    width: 100%;
+    z-index: 10;
+    pointer-events: none;
+    label {
+      text-align: left;
+      font-size: rem(18px);
+    }
+  }
+}
+input {
+  height: 48px;
+  background-color: $brand-secondary;
+  color: $white;
+  border: 1px solid $brand-primary;
+  padding: 0 24px;
+  display: flex;
+  margin-top: 8px;
+  width: calc(100% - 56px);
+  font-size: rem(14px);
+  font-weight: $fw-bold;
+  z-index: 10;
+  pointer-events: auto;
+}

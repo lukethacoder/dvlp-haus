@@ -1,0 +1,60 @@
+// --- Type --- //
+
+// Breakpoint font sizes //
+
+$breakpoints: (
+  small: 0,
+  medium: 768px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
+
+$header-sizes: (
+  small: (
+    'h1': 42px,
+    'h2': 36px,
+    'h3': 22px,
+    'h4': 20px,
+    'h5': 16px,
+    'h6': 14px,
+    'p': 16px,
+  ),
+  medium: (
+    'h1': 54px,
+    'h2': 42px,
+    'h3': 28px,
+    'h4': 20px,
+    'h5': 16px,
+    'h6': 14px,
+    'p': 16px,
+  ),
+  large: (
+    'h1': 60px,
+    'h2': 48px,
+    'h3': 36px,
+    'h4': 22px,
+    'h5': 16px,
+    'h6': 14px,
+    'p': 16px,
+  ),
+);
+
+// Font size change //
+
+@each $size, $headers in $header-sizes {
+  $breakpoint: map-get($breakpoints, $size);
+  @media (min-width: $breakpoint) {
+    @each $header, $font-size in $headers {
+      #{$header} {
+        font-size: $font-size;
+      }
+    }
+  }
+}
+h1,
+h2,
+h3 {
+  font-weight: $fw-bold;
+  text-transform: uppercase;
+}
