@@ -27,7 +27,8 @@
     "@types/react-dom": "^16.0.11",
     "@types/styled-components": "^4.1.16",
     "babel-plugin-inline-react-svg": "^1.1.0",
-    "babel-plugin-styled-components": "^1.10.0"
+    "babel-plugin-styled-components": "^1.10.0",
+    "lighthousebot": "git+https://github.com/ebidel/lighthousebot.git"
   },
   "license": "ISC"
 }

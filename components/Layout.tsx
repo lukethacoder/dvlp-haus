@@ -24,14 +24,16 @@ const Layout: React.SFC<Props> = ({
       </Head>
       <header>
         <div className="logo__wrapper">
-          <div className="logo" onClick={() => setNavToggle(!isNavToggle)}>
-            <img src="/static/img/logo.svg"/>
-          </div>
+          <Link href="/">
+            <div className="logo">
+              <img src="/static/img/logo.svg" alt="site logo"/>
+            </div>
+          </Link>
         </div>
         {
           current ?
             <div className="current__page" onClick={() => setNavToggle(!isNavToggle)}>
-              <h3>{current}</h3>
+              <h3>{current}<span>Menu</span></h3>
             </div>
           : null
         }

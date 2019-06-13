@@ -3,15 +3,16 @@
 // Breakpoint font sizes //
 
 $breakpoints: (
-  small: 0,
-  medium: 768px,
-  large: 1024px,
-  xlarge: 1200px,
-  xxlarge: 1440px,
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1440px,
 );
 
 $header-sizes: (
-  small: (
+  xs: (
     'h1': 42px,
     'h2': 36px,
     'h3': 22px,
@@ -20,7 +21,7 @@ $header-sizes: (
     'h6': 14px,
     'p': 16px,
   ),
-  medium: (
+  md: (
     'h1': 54px,
     'h2': 42px,
     'h3': 28px,
@@ -29,7 +30,7 @@ $header-sizes: (
     'h6': 14px,
     'p': 16px,
   ),
-  large: (
+  lg: (
     'h1': 60px,
     'h2': 48px,
     'h3': 36px,

@@ -29,5 +29,6 @@ export const encodeSVG = (data: any) => {
   return data.replace(symbols, encodeURIComponent);
 }
 export const checkIfValidSVG = (svg: string) => {
-  return svg.includes('<svg>') && svg.includes('</svg>')
+  return svg.includes('<svg') && svg.includes('</svg>')
 }
+

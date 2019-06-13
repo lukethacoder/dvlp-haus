@@ -3,7 +3,6 @@ import 'firebase/firestore'
 
 export function loadFirebase() {
   try {
-
     const firebaseConfig = {
       apiKey: process.env.FIREBASE_API_KEY,
       authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -17,6 +16,7 @@ export function loadFirebase() {
     // firebase.firestore().settings({timestampsInSnapshots: true});
   } catch (err) {
     if (err.message) {
+      console.log('err.message', err.message)
       console.error('app already exists')
     }
   }

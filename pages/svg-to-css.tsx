@@ -5,6 +5,15 @@ import Layout from '../components/Layout'
 import Container from '../components/Container'
 import { encodeSVG, checkIfValidSVG } from '../lib/helpers';
 
+declare module 'react' {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    // extends React's HTMLAttributes
+    custom?: string;
+    columns?: string;
+  }
+}
+
+
 const SvgToCssPage: React.FunctionComponent = () => {
   const [svgInput, setSvgInput] = React.useState();
   const [pureDataOutput, setPureDataOutput] = React.useState();
@@ -35,9 +44,9 @@ const SvgToCssPage: React.FunctionComponent = () => {
   }
 
   return (
-    <Layout title="SVG to CSS | DVLP HAUS | toolbox for developers">
+    <Layout current="SVG to CSS" title="SVG to CSS | DVLP HAUS | toolbox for developers">
       <Container>
-        <div className="svg__to__css grid grid-2">
+        <grid className="svg__to__css " columns="4">
           <div>
             <div className="input_field">
               <div className="btn-settings">
@@ -100,7 +109,7 @@ const SvgToCssPage: React.FunctionComponent = () => {
                     { __html:
                       `${
                         svgPreview ?
-                          svgPreview.toString().includes('<svg>') && svgPreview.toString().includes('</svg>') ?
+                          svgPreview.toString().includes('<svg') && svgPreview.toString().includes('</svg>') ?
                             svgPreview : ''
                             : ''
                       }`
@@ -111,7 +120,7 @@ const SvgToCssPage: React.FunctionComponent = () => {
               </div>
             </div>
           </div>
-        </div>
+        </grid>
       </Container>
     </Layout>
   )

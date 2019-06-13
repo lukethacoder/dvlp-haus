@@ -47,7 +47,31 @@ header {
       border-color: $brand-primary;
       border-style: solid;
       border-width: 0 1px 1px 1px;
+      position: relative;
+      overflow: hidden;
       cursor: pointer;
+      opacity: 1;
+      @include trans;
+      &:hover {
+        color: transparent;
+        @include trans;
+        span {
+          color: $brand-quaternary;
+          top: 2px;
+          @include trans;
+        }
+      }
+      span {
+        width: calc(100% - 4px);
+        top: 42px;
+        left: 2px;
+        position: absolute;
+        border-color: transparent;
+        // background-color: $brand-secondary;
+        padding: 6px 64px;
+        color: transparent;
+        @include trans;
+      }
     }
   }
 }
@@ -57,22 +81,34 @@ nav {
   width: 100%;
   min-height: 0;
   max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   overflow: hidden;
   transition: all 0.3s ease;
   background-color: $brand-secondary;
   z-index: 100;
   &.open {
     min-height: 250px;
-    height: calc(80vh - 128px);
+    height: calc(90vh - 128px);
     max-height: 100%;
+    overflow: auto;
     transition: all 0.3s ease;
   }
   .nav__list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     grid-gap: 24px;
     width: 100%;
+    max-width: map-get($breakpoints, xxl);
+    margin: 0 auto;
     @include list_reset;
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: repeat(3, 1fr);
+    }
     .nav__item {
       cursor: pointer;
       padding: 0 36px;
