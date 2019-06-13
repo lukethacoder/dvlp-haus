@@ -9,15 +9,33 @@
   position: relative;
   .btn-settings {
     position: absolute;
-    top: 8px;
-    right: 6px;
-    padding: 4px 16px;
+    top: 5px;
+    right: 0;
+    padding: 0;
     border-radius: 8px 8px 0 0;
     font-size: rem(10px);
     background-color: $brand-secondary;
     border: 1px solid $brand-primary;
     z-index: 0;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .clipboard__btn {
+      position: relative;
+      padding: 4px 16px;
+      width: 100%;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: $fw-medium;
+      &:focus {
+        color: $brand-primary;
+        transition: all 0.5s ease;
+        padding: 3px 16px 5px;
+      }
+    }
   }
   .input_field_container {
     width: 100%;
@@ -37,9 +55,32 @@ input {
   padding: 0 24px;
   display: flex;
   margin-top: 8px;
-  width: calc(100% - 56px);
+  width: 100%;
   font-size: rem(14px);
   font-weight: $fw-bold;
   z-index: 10;
   pointer-events: auto;
+}
+textarea,
+.svg__preview {
+  height: 124px;
+  max-width: 100%;
+  width: 100%;
+  background-color: $brand-secondary;
+  color: $white;
+  border: 1px solid $brand-primary;
+  padding: 8px 12px;
+  display: flex;
+  margin-top: 8px;
+  font-size: rem(14px);
+  font-weight: $fw-bold;
+  z-index: 10;
+  pointer-events: auto;
+  font-family: $font-family-base;
+}
+.svg__preview {
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

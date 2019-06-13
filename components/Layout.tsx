@@ -15,7 +15,6 @@ const Layout: React.SFC<Props> = ({
   title = 'DVLP HAUS | toolbox for developers',
 }) => {
   const [isNavToggle, setNavToggle] = React.useState(false);
-  console.log('isNavToggle', isNavToggle);
   return (
     <div>
       <Head>
@@ -25,7 +24,7 @@ const Layout: React.SFC<Props> = ({
       </Head>
       <header>
         <div className="logo__wrapper">
-          <div className="logo" onClick={() => (setNavToggle(!isNavToggle), console.log('isNavToggle', isNavToggle))}>
+          <div className="logo" onClick={() => setNavToggle(!isNavToggle)}>
             <img src="/static/img/logo.svg"/>
           </div>
         </div>

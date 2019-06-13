@@ -7,7 +7,7 @@ const SvgToCssPage: React.FunctionComponent = () => (
     <Container>
       <div className="font__converter grid grid-2">
         <div>
-          <div className="input_field hasSettings">
+          <div className="input_field">
             <div className="btn-settings">Settings</div>
             <div className="input_field_container">
               <label>From Value</label>

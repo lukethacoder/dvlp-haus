@@ -4,30 +4,47 @@ import Layout from '../components/Layout'
 import Container from '../components/Container'
 import List from '../components/List'
 import { UsefulLinksProps } from '../interfaces'
-import { findCategory, getAllCategories } from '../utils/api-useful-links'
+
+import { getUsefulLinks } from '../lib/api';
+import { CapitaliseFirstLetter } from '../lib/helpers';
 
 type Props = {
-  items: UsefulLinksProps[]
+  items: {
+    useful_links: UsefulLinksProps[]
+    categories: Array<string>
+  }
   pathname?: string
-  allCategoryOptions: Array<string>
 }
 
-const WithInitialProps: NextPage<Props> = ({ items, allCategoryOptions }) => {
-  const [currentCategory, setCategory]: any = React.useState('');
-  const [linksData, setlinksData]: any = React.useState(items);
-  console.log('currentCategory', currentCategory)
+const WithInitialProps: NextPage<Props> = ({ items }) => {
+  const [currentCategory, setCategory]: any = React.useState('all');
+  const [linksData, setlinksData]: any = React.useState(items.useful_links);
+
   const changeCategory = async (changeTo: string) => {
-    const items: UsefulLinksProps[] = await findCategory(changeTo);
     setCategory(changeTo)
-    setlinksData(items);
+    console.log(setlinksData)
   }
   return(
   <Layout current="Useful Links" title="Useful Links | DVLP HAUS | toolbox for developers">
     <Container customClass="page__useful_links">
       <ul className="useful__links_categories">
-        <li className={`category__item ${currentCategory == '' ? 'active' : ''}`} onClick={() => changeCategory('')}>All</li>
+        <li
+          key="all"
+          className={`category__item ${currentCategory == 'all' ? 'active' : ''}`}
+          onClick={() => changeCategory('all')}
+        >
+          All
+        </li>
         {
-          allCategoryOptions.map(cat => <li className={`category__item ${currentCategory == cat ? 'active' : ''}`} onClick={() => changeCategory(cat)}>{cat}</li>)
+          items.categories.map((cat: string) =>
+            <li
+              key={cat}
+              className={`category__item ${currentCategory == cat ? 'active' : ''}`}
+              onClick={() => changeCategory(cat)}
+            >
+              {CapitaliseFirstLetter(cat)}
+            </li>
+          )
         }
       </ul>
       <div className="useful__links">
@@ -38,11 +55,8 @@ const WithInitialProps: NextPage<Props> = ({ items, allCategoryOptions }) => {
 )}
 
 WithInitialProps.getInitialProps = async ({ pathname }) => {
-  // const items: UsefulLinksProps[] = await findAll()
-  const allCategoryOptions: any = await getAllCategories();
-  const items: UsefulLinksProps[] = await findCategory();
-
-  return { items, pathname, allCategoryOptions }
+  let items: UsefulLinksProps[] | any = await getUsefulLinks();
+  return { items, pathname }
 }
 
 export default WithInitialProps

@@ -6,9 +6,9 @@ type Props = {
   items: UsefulLinksProps[]
 }
 
-const List: React.FunctionComponent<Props> = ({ items }) => (
+const List: React.FunctionComponent<Props> = ( items: any ) => (
   <ul>
-    {items.map(item => (
+    {items.items.map((item: any) => (
       <li key={item.id}>
         <ListItem data={item} />
       </li>

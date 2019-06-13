@@ -14,5 +14,5 @@ export type UsefulLinksProps = {
   url: string;
   desc: string;
   category: string;
-  flames?: number;
+  flames: number;
 };
