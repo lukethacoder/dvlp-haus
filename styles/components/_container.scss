@@ -5,7 +5,8 @@
   padding: 48px;
   position: relative;
   z-index: 10;
-  &.page__useful_links {
+  &.page__useful_links,
+  &.page__font_converter {
     margin: 124px auto 0;
   }
 }
