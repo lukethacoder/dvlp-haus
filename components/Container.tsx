@@ -9,7 +9,7 @@ const Container: React.FunctionComponent<ContainerProps> = ({
   customClass
 }) => {
   return (
-    <div className={`item__container ${customClass}`}>
+    <div className={`item__container ${customClass ? customClass : ''}`}>
       {children}
     </div>
   )

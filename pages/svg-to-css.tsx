@@ -13,7 +13,6 @@ declare module 'react' {
   }
 }
 
-
 const SvgToCssPage: React.FunctionComponent = () => {
   const [svgInput, setSvgInput] = React.useState();
   const [pureDataOutput, setPureDataOutput] = React.useState();
@@ -46,7 +45,7 @@ const SvgToCssPage: React.FunctionComponent = () => {
   return (
     <Layout current="SVG to CSS" title="SVG to CSS | DVLP HAUS | toolbox for developers">
       <Container>
-        <grid className="svg__to__css " columns="4">
+        <div className="grid grid-2 svg__to__css " columns="4">
           <div>
             <div className="input_field">
               <div className="btn-settings">
@@ -120,7 +119,7 @@ const SvgToCssPage: React.FunctionComponent = () => {
               </div>
             </div>
           </div>
-        </grid>
+        </div>
       </Container>
     </Layout>
   )
