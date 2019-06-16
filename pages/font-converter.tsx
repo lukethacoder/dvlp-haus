@@ -10,21 +10,9 @@ interface InputVal {
   [key: string]: {
     name: string,
     raw: string,
-    value: number,
-    ext?: string
+    value: number | string
   }
 }
-interface immutableCustomProps {
-  [key: string]: InputVal
-}
-// interface inputState {
-//   pixels: InputVal,
-//   rem: InputVal,
-//   em: InputVal,
-//   custom: InputVal,
-//   base: InputVal
-// }
-
 // the initial state
 const initialState: InputVal = {
   pixels: {
@@ -45,8 +33,12 @@ const initialState: InputVal = {
   custom: {
     name: 'custom',
     raw: "1dvlp",
-    value: 1,
-    ext: 'dvlp'
+    value: 1
+  },
+  custom_ext: {
+    name: 'custom_ext',
+    raw: "dvlp",
+    value: "dvlp"
   },
   base: {
     name: 'base',
@@ -56,34 +48,219 @@ const initialState: InputVal = {
 }
 const initialStateKeys: Array<string> = Object.keys(initialState);
 
-// the reducer
+// reducer
 const inputReducer = (allInputs: any, { field, value }: any) => allInputs.set(field, value);
 
 const FontConverterPage: React.FunctionComponent = () => {
-  const [ allInputs, setAllInputs ] = React.useReducer<React.Reducer<any, any>>(
+  const [ allInputs, dispatch ] = React.useReducer<React.Reducer<any, any>>(
     inputReducer, Map(initialState)
   );
-
-  const handlers = initialStateKeys.reduce((m: any, field: any) => {
-    // the onChange handler for this field is only re-created if the setAllInputs method changes
-    console.log('m', m)
-    console.log('field', field)
-    m[field] = React.useCallback((e: any) => setAllInputs({ field, value: e.currentTarget.value }), [ field, setAllInputs ])
-    return m
-  }, {})
   
   // convert the immutable back to an object for easy access
   const stateAsObj = React.useMemo(() => allInputs.toObject(), [allInputs])
+
+  const handlers = initialStateKeys.reduce((state_temp: any, field: any) => {
+    // the onChange handler for this field is only re-created if the dispatch method changes
+    switch (field) {
+      case 'pixels':  
+        state_temp.pixels = React.useCallback((e: any) => {
+          dispatch({
+            field: 'pixels',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? parseFloat(e.currentTarget.value) : '',
+              raw: e.currentTarget.value,
+            }
+          })
+          dispatch({
+            field: 'rem',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}rem` : '',
+            }
+          })
+          dispatch({
+            field: 'custom',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
+            }
+          })
+          return dispatch({
+            field: 'em',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}em` : '',
+            }
+          })
+        }, [ "pixels", dispatch ])
+        break;
+      case 'em':
+        state_temp[field] = React.useCallback((e: any) => {
+          dispatch({
+            field: 'pixels',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) * stateAsObj["base"].value)}px` : '',
+              raw: (parseFloat(e.currentTarget.value) * stateAsObj["base"].value),
+            }
+          })
+          dispatch({
+            field: 'rem',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}rem` : '',
+            }
+          })
+          dispatch({
+            field: 'custom',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
+            }
+          })
+          return dispatch({
+            field,
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: e.currentTarget.value,
+            }
+          })
+        }, [ field, dispatch ])
+        break;
+      case 'rem':
+        state_temp[field] = React.useCallback((e: any) => {
+          dispatch({
+            field: 'pixels',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) * stateAsObj["base"].value)}px` : '',
+              raw: (parseFloat(e.currentTarget.value) * stateAsObj["base"].value),
+            }
+          })
+          dispatch({
+            field: 'em',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}em` : '',
+            }
+          })
+          dispatch({
+            field: 'custom',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
+            }
+          })
+          return dispatch({
+            field,
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: e.currentTarget.value,
+            }
+          })
+        }, [ field, dispatch ])
+        break;
+      case 'custom':
+        state_temp[field] = React.useCallback((e: any) => {
+          dispatch({
+            field: 'pixels',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) * stateAsObj["base"].value)}px` : '',
+              raw: (parseFloat(e.currentTarget.value) * stateAsObj["base"].value),
+            }
+          })
+          dispatch({
+            field: 'em',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}em` : '',
+            }
+          })
+          dispatch({
+            field: 'rem',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}rem` : '',
+            }
+          })
+          return dispatch({
+            field,
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
+              raw: e.currentTarget.value,
+            }
+          })
+        }, [ field, dispatch ])
+        break;
+      case 'custom_ext':
+        state_temp[field] = React.useCallback((e: any) => {
+          dispatch({
+            field: 'custom',
+            value: {
+              raw: `${stateAsObj["pixels"].value / stateAsObj["base"].value}${e.currentTarget.value}`,
+            }
+          })
+          return dispatch({
+            field,
+            value: {
+              value: e.currentTarget.value,
+              raw: e.currentTarget.value,
+            }
+          })
+        }, [ field, dispatch ])
+        break;
+      case 'base':
+        state_temp[field] = React.useCallback((e: any) => {
+          dispatch({
+            field: 'em',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}em` : '',
+            }
+          })
+          dispatch({
+            field: 'rem',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}rem` : '',
+            }
+          })
+          dispatch({
+            field: 'custom',
+            value: {
+              value: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
+            }
+          })
+          return dispatch({
+            field,
+            value: {
+              value: e.currentTarget.value,
+              raw: e.currentTarget.value,
+            }
+          })
+        }, [ field, dispatch ])
+        break;
+      default: 
+        console.log('defautl switch', field)
+    }
+    return state_temp
+  }, {})
+  
+
 
   return (
     <Layout current="Font Converter" title="FONT CONVERTER | DVLP HAUS | toolbox for developers">
       <Container customClass="page__font_converter">
         <div className="font__converter grid grid-2">
           <div className="input_field">
+            <div className="btn-settings">
+              <Clipboard className="clipboard__btn" data-clipboard-text={stateAsObj["pixels"].raw}>
+                Copy
+              </Clipboard>
+            </div>
             <div className="input_field_container">
               <label>PX</label>
               <input
-                value={stateAsObj['pixels'].raw}
+                value={stateAsObj["pixels"].raw}
                 onChange={handlers['pixels']}
                 name="pixels"
                 type="text"
@@ -92,6 +269,11 @@ const FontConverterPage: React.FunctionComponent = () => {
             </div>
           </div>
           <div className="input_field">
+            <div className="btn-settings">
+              <Clipboard className="clipboard__btn" data-clipboard-text={stateAsObj["em"].raw}>
+                Copy
+              </Clipboard>
+            </div>
             <div className="input_field_container">
               <label>Em</label>
               <input
@@ -105,6 +287,11 @@ const FontConverterPage: React.FunctionComponent = () => {
           </div>
 
           <div className="input_field">
+            <div className="btn-settings">
+              <Clipboard className="clipboard__btn" data-clipboard-text={stateAsObj["rem"].raw}>
+                Copy
+              </Clipboard>
+            </div>
             <div className="input_field_container">
               <label>Rem</label>
               <input
@@ -117,6 +304,11 @@ const FontConverterPage: React.FunctionComponent = () => {
             </div>
           </div>
           <div className="input_field">
+            <div className="btn-settings">
+              <Clipboard className="clipboard__btn" data-clipboard-text={stateAsObj["custom"].raw}>
+                Copy
+              </Clipboard>
+            </div>
             <div className="input_field_container">
               <label>Custom</label>
               <input
@@ -146,9 +338,9 @@ const FontConverterPage: React.FunctionComponent = () => {
             <div className="input_field_container">
               <label>Custom Extension</label>
               <input
-                value={stateAsObj['custom'].ext}
-                onChange={handlers['custom']}
-                name="customExt"
+                value={stateAsObj['custom_ext'].raw}
+                onChange={handlers['custom_ext']}
+                name="custom_ext"
                 type="text"
                 placeholder="dvlp"
               />
