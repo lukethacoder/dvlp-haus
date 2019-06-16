@@ -31,4 +31,3 @@ export const encodeSVG = (data: any) => {
 export const checkIfValidSVG = (svg: string) => {
   return svg.includes('<svg') && svg.includes('</svg>')
 }
-
