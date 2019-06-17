@@ -2,12 +2,12 @@ sudo: required
 language: node_js
 branches:
   only:
-  - master
-  - next
+    - master
+    - next
 matrix:
   include:
-    - node_js: "10"
-    - node_js: "11"
+    - node_js: '10'
+    - node_js: '11'
       if: head_branch IS blank AND branch = master
 dist: out
 cache:
@@ -29,5 +29,8 @@ deploy:
   provider: surge
   project: ./out
   domain: dvlp-haus.surge.sh
+  skip_cleanup: true
+  on:
+    all_branches: true
 addons:
   chrome: stables
