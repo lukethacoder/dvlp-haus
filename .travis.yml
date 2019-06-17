@@ -23,8 +23,6 @@ script:
 before_cache:
   # nyc, jest and other projects store files in here. They mess up the travis build cache.
   - rm -rf ./node_modules/.cache/
-after_success:
-  # after success
 deploy:
   provider: surge
   project: ./out
@@ -32,5 +30,8 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
+after_success:
+  # after success
+  - npm run lh -- http://dvlp-haus.surge.sh
 addons:
   chrome: stables

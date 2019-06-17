@@ -7,6 +7,7 @@
     "start": "next start",
     "export": "npm run build && next export",
     "surge": "npm run export && surge ./out dvlp-haus.surge.sh",
+    "lh": "lighthousebot",
     "type-check": "tsc"
   },
   "dependencies": {
@@ -31,7 +32,7 @@
     "@types/styled-components": "^4.1.16",
     "babel-plugin-inline-react-svg": "^1.1.0",
     "babel-plugin-styled-components": "^1.10.0",
-    "lighthousebot": "git+https://github.com/ebidel/lighthousebot.git"
+    "lighthousebot": "git+https://github.com/GoogleChromeLabs/lighthousebot.git"
   },
   "license": "ISC"
 }
