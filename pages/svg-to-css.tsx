@@ -46,7 +46,7 @@ const SvgToCssPage: React.FunctionComponent = () => {
     <Layout current="SVG to CSS" title="SVG to CSS | DVLP HAUS | toolbox for developers">
       <Container>
         <div className="grid grid-2 svg__to__css " columns="4">
-          <div>
+          <div className="grid grid-1">
             <div className="input_field">
               <div className="btn-settings">
                 <Clipboard className="clipboard__btn" data-clipboard-text={svgInput}>
