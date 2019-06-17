@@ -3,7 +3,7 @@ import Document, { Head, Main, NextScript } from 'next/document'
 export default class MyDocument extends Document {
   render () {
     return (
-      <html>
+      <html lang="en">
         <Head>
           <link rel="apple-touch-icon" sizes="180x180" href="static/img/icons/apple-touch-icon.png"/>
           <link rel="icon" type="image/png" sizes="32x32" href="static/img/icons/favicon-32x32.png"/>
@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
           <meta name="application-name" content="DVLP HAUS"/>
           <meta name="msapplication-TileColor" content="#101017"/>
           <meta name="theme-color" content="#101017"/>
-          <meta name="Description" content="toolbox for developers">
+          <meta name="Description" content="toolbox for developers"/>
         </Head>
         <body>
           <Main />
