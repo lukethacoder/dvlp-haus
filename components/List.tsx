@@ -7,7 +7,7 @@ type Props = {
 }
 
 const List: React.FunctionComponent<Props> = ( items: any ) => {
-  console.log(items);
+  // console.log(items);
   return (
   <ul>
     <li>test</li>

@@ -5,7 +5,6 @@ type Props = {
 }
 
 const Loading: React.FunctionComponent<Props> = ({ data }) => {
-  console.log(data);
   if (data === 'house') {
     return (
       <div className="loading__container icon">

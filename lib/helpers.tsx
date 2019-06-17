@@ -15,7 +15,7 @@ export const inverseQuoteType = (text: string, type: string) => {
       return text.replace(/'/g, '"');
     }
     default: 
-      console.log('invalid type: valid types are "single" or "double"')
+      // console.log('invalid type: valid types are "single" or "double"')
   }
 };
 

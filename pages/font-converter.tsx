@@ -240,7 +240,7 @@ const FontConverterPage: React.FunctionComponent = () => {
         }, [ field, dispatch ])
         break;
       default: 
-        console.log('defautl switch', field)
+        // console.log('defautl switch', field)
     }
     return state_temp
   }, {})

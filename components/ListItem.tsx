@@ -11,7 +11,7 @@ const ListItem: React.FunctionComponent<Props> = ({ data }) => {
   const [isInfoOpen, setInfoOpen] = React.useState(false);
   
   const handleAddFlame = (id: string) => {
-    console.log('add flame here 🔥', id)
+    // console.log('add flame here 🔥', id)
     // setUsefulLinkFlame(id);
     // const newFlame = Number(flameCount) + 1;
     // incrementFlame(newFlame);

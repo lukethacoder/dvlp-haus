@@ -16,8 +16,8 @@ export function loadFirebase() {
     // firebase.firestore().settings({timestampsInSnapshots: true});
   } catch (err) {
     if (err.message) {
-      console.log('err.message', err.message)
-      console.error('app already exists')
+      // console.log('err.message', err.message)
+      // console.error('app already exists')
     }
   }
   return firebase;

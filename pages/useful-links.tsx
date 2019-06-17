@@ -30,7 +30,7 @@ const WithInitialProps: NextPage<Props> = () => {
   );
 
   let data: any = value;
-  console.log(data ? data.docs ? data.docs : '' : '');
+  // console.log(data ? data.docs ? data.docs : '' : '');
 
   error ? console.error(error) : '';
   loading ? console.warn(loading) : '';

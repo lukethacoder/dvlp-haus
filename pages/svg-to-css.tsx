@@ -13,12 +13,12 @@ const SvgToCssPage: React.FunctionComponent = () => {
 
   const handleInputChange = (event: any) => {
     event.persist();
-    console.log(event.target.name);
+    // console.log(event.target.name);
     if (event.target.name = 'svgCode') {
       if (checkIfValidSVG(event.target.value)) {
-        console.log('valid svg');
+        // console.log('valid svg');
         
-        console.log(`"data:image/svg+xml,${inverseQuoteType(encodeSVG(event.target.value), 'single' )}"`);
+        // console.log(`"data:image/svg+xml,${inverseQuoteType(encodeSVG(event.target.value), 'single' )}"`);
         setPureDataOutput(`"data:image/svg+xml,${inverseQuoteType(encodeSVG(event.target.value), 'single' )}"`);
         setCssBackgroundOutput(`background-image: url("data:image/svg+xml,${inverseQuoteType(encodeSVG(event.target.value), 'single' )}");`);
         setSvgPreview(event.target.value);

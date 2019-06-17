@@ -10,8 +10,8 @@ type Props = {
 }
 
 const ErrorPage: NextPage<Props> = ({ statusCode, pathname }) => {
-  console.log('statusCode', statusCode)
-  console.log('pathname', pathname)
+  // console.log('statusCode', statusCode)
+  // console.log('pathname', pathname)
   let error_message = 'page not found';
   switch (statusCode) {
     case 404: {
