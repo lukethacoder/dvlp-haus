@@ -3,6 +3,7 @@ language: node_js
 branches:
   only:
   - master
+  - next
 matrix:
   include:
     - node_js: "10"
@@ -24,5 +25,9 @@ before_cache:
   - rm -rf ./node_modules/.cache/
 after_success:
   # after success
+deploy:
+  provider: surge
+  project: ./out
+  domain: dvlp-haus.surge.sh
 addons:
   chrome: stables
