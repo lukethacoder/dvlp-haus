@@ -2,32 +2,49 @@ import * as React from 'react'
 import { NextPage } from 'next'
 import Layout from '../components/Layout'
 import Container from '../components/Container'
-import List from '../components/List'
 import { UsefulLinksProps } from '../interfaces'
 
-import { getUsefulLinks } from '../lib/api';
-import { CapitaliseFirstLetter } from '../lib/helpers';
+// import { CapitaliseFirstLetter } from '../lib/helpers';
+
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { loadFirebase } from '../lib/firebase';
+import ListItem from '../components/ListItem';
+import Loading from '../components/Loading';
 
 type Props = {
-  items: {
+  items?: {
     useful_links: UsefulLinksProps[]
-    categories: Array<string>
+    categories?: Array<string>
   }
   pathname?: string
 }
 
-const WithInitialProps: NextPage<Props> = ({ items }) => {
-  const [currentCategory, setCategory]: any = React.useState('all');
-  const [linksData, setlinksData]: any = React.useState(items.useful_links);
+const WithInitialProps: NextPage<Props> = () => {
+  // const [currentCategory, setCategory]: any = React.useState('all');
+  
+  const [value, loading, error] = useCollection(
+    loadFirebase().firestore().collection('useful-links'),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
 
-  const changeCategory = async (changeTo: string) => {
-    setCategory(changeTo)
-    console.log(setlinksData)
-  }
+  let data: any = value;
+  console.log(data ? data.docs ? data.docs : '' : '');
+
+  error ? console.error(error) : '';
+  loading ? console.warn(loading) : '';
+  
+  // let categories: any = data ? data.docs ? [...new Set(data.docs.map((item: UsefulLinksProps) => item.category))] : [] : [];
+  
+  // const changeCategory = async (changeTo: string) => {
+  //   setCategory(changeTo)
+  // }
+
   return(
   <Layout current="Useful Links" title="Useful Links | DVLP HAUS | toolbox for developers">
     <Container customClass="page__useful_links">
-      <ul className="useful__links_categories">
+      {/* <ul className="useful__links_categories">
         <li
           key="all"
           className={`category__item ${currentCategory == 'all' ? 'active' : ''}`}
@@ -36,27 +53,28 @@ const WithInitialProps: NextPage<Props> = ({ items }) => {
           All
         </li>
         {
-          items.categories.map((cat: string) =>
+          categories.map((cat: string) =>
             <li
               key={cat}
               className={`category__item ${currentCategory == cat ? 'active' : ''}`}
               onClick={() => changeCategory(cat)}
             >
-              {CapitaliseFirstLetter(cat)}
+              {cat ? CapitaliseFirstLetter(cat) : ''}
             </li>
           )
         }
-      </ul>
+      </ul> */}
       <div className="useful__links">
-        <List items={linksData} />
+        <ul>
+          {data ? data.docs ? data.docs.map((doc: any) => (
+            <li key={doc.id}>
+              <ListItem data={doc.data()} />
+            </li>
+          )) : <Loading data="house"/> : <Loading data="house"/>}
+        </ul>
       </div>
     </Container>
   </Layout>
 )}
-
-WithInitialProps.getInitialProps = async ({ pathname }) => {
-  let items: UsefulLinksProps[] | any = await getUsefulLinks();
-  return { items, pathname }
-}
 
 export default WithInitialProps

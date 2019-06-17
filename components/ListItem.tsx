@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { UsefulLinksProps } from '../interfaces'
-import { setUsefulLinkFlame } from '../lib/api';
 
 type Props = {
   data: UsefulLinksProps
@@ -12,10 +11,11 @@ const ListItem: React.FunctionComponent<Props> = ({ data }) => {
   const [isInfoOpen, setInfoOpen] = React.useState(false);
   
   const handleAddFlame = (id: string) => {
-    setUsefulLinkFlame(id);
-    const newFlame = Number(flameCount) + 1;
-    incrementFlame(newFlame);
-    setUserFlammed(true);
+    console.log('add flame here 🔥', id)
+    // setUsefulLinkFlame(id);
+    // const newFlame = Number(flameCount) + 1;
+    // incrementFlame(newFlame);
+    // setUserFlammed(true);
   }
   const toggleInfo = (show: boolean) => {
     setInfoOpen(show);
@@ -26,7 +26,7 @@ const ListItem: React.FunctionComponent<Props> = ({ data }) => {
         {data.name}
       </a>
       <div className="links__meta">
-        <p onClick={() => handleAddFlame(data.id)} className={`flame ${hasUserFlammed ? 'flammed' : ''}`}> 🔥 {flameCount}</p>
+        {/* <p onClick={() => handleAddFlame(data.id)} className={`flame ${hasUserFlammed ? 'flammed' : ''}`}> 🔥 {flameCount}</p> */}
         <a className="url" href={`https://${data.url}`}>link</a>
         <p className="info" onClick={() => toggleInfo(!isInfoOpen)} onMouseEnter={() => toggleInfo(true)} onMouseLeave={() => toggleInfo(false)}>info</p>
       </div>

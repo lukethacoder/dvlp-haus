@@ -6,14 +6,17 @@ type Props = {
   items: UsefulLinksProps[]
 }
 
-const List: React.FunctionComponent<Props> = ( items: any ) => (
+const List: React.FunctionComponent<Props> = ( items: any ) => {
+  console.log(items);
+  return (
   <ul>
-    {items.items.map((item: any) => (
+    <li>test</li>
+    {/* {items.items.map((item: any) => (
       <li key={item.id}>
         <ListItem data={item} />
       </li>
-    ))}
+    ))} */}
   </ul>
-)
+)}
 
 export default List
