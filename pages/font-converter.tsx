@@ -5,6 +5,7 @@ import Clipboard from 'react-clipboard.js';
 import Layout from '../components/Layout'
 import Container from '../components/Container'
 import { any, string } from 'prop-types';
+import { mathRound } from '../lib/helpers';
 
 interface InputVal {
   [key: string]: {
@@ -75,21 +76,27 @@ const FontConverterPage: React.FunctionComponent = () => {
             field: 'rem',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}rem` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${(
+                mathRound( parseFloat(e.currentTarget.value) / stateAsObj["base"].value, 3)
+              )}rem` : '',
             }
           })
           dispatch({
             field: 'custom',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${(
+                mathRound( parseFloat(e.currentTarget.value) / stateAsObj["base"].value, 3 )
+              )}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
             }
           })
           return dispatch({
             field: 'em',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) / stateAsObj["base"].value )}em` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${(
+                mathRound(parseFloat(e.currentTarget.value) / stateAsObj["base"].value, 3)
+              )}em` : '',
             }
           })
         }, [ "pixels", dispatch ])
@@ -100,21 +107,21 @@ const FontConverterPage: React.FunctionComponent = () => {
             field: 'pixels',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) * stateAsObj["base"].value)}px` : '',
-              raw: (parseFloat(e.currentTarget.value) * stateAsObj["base"].value),
+              raw: (mathRound(parseFloat(e.currentTarget.value) * stateAsObj["base"].value, 3)),
             }
           })
           dispatch({
             field: 'rem',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}rem` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(parseFloat(e.currentTarget.value), 3)}rem` : '',
             }
           })
           dispatch({
             field: 'custom',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(parseFloat(e.currentTarget.value), 3)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
             }
           })
           return dispatch({
@@ -132,21 +139,21 @@ const FontConverterPage: React.FunctionComponent = () => {
             field: 'pixels',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) * stateAsObj["base"].value)}px` : '',
-              raw: (parseFloat(e.currentTarget.value) * stateAsObj["base"].value),
+              raw: (mathRound(parseFloat(e.currentTarget.value) * stateAsObj["base"].value, 3)),
             }
           })
           dispatch({
             field: 'em',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}em` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(parseFloat(e.currentTarget.value), 3)}em` : '',
             }
           })
           dispatch({
             field: 'custom',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(parseFloat(e.currentTarget.value), 3)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
             }
           })
           return dispatch({
@@ -164,21 +171,21 @@ const FontConverterPage: React.FunctionComponent = () => {
             field: 'pixels',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${(parseFloat(e.currentTarget.value) * stateAsObj["base"].value)}px` : '',
-              raw: (parseFloat(e.currentTarget.value) * stateAsObj["base"].value),
+              raw: (mathRound(parseFloat(e.currentTarget.value) * stateAsObj["base"].value, 3)),
             }
           })
           dispatch({
             field: 'em',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}em` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(parseFloat(e.currentTarget.value), 3)}em` : '',
             }
           })
           dispatch({
             field: 'rem',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${parseFloat(e.currentTarget.value)}rem` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(parseFloat(e.currentTarget.value), 3)}rem` : '',
             }
           })
           return dispatch({
@@ -195,7 +202,7 @@ const FontConverterPage: React.FunctionComponent = () => {
           dispatch({
             field: 'custom',
             value: {
-              raw: `${stateAsObj["pixels"].value / stateAsObj["base"].value}${e.currentTarget.value}`,
+              raw: `${mathRound(stateAsObj["pixels"].value / stateAsObj["base"].value, 3)}${e.currentTarget.value}`,
             }
           })
           return dispatch({
@@ -213,21 +220,21 @@ const FontConverterPage: React.FunctionComponent = () => {
             field: 'em',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}em` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(stateAsObj["pixels"].value / parseFloat(e.currentTarget.value), 3)}em` : '',
             }
           })
           dispatch({
             field: 'rem',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}rem` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(stateAsObj["pixels"].value / parseFloat(e.currentTarget.value), 3)}rem` : '',
             }
           })
           dispatch({
             field: 'custom',
             value: {
               value: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}` : '',
-              raw: parseFloat(e.currentTarget.value) ? `${stateAsObj["pixels"].value / parseFloat(e.currentTarget.value)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
+              raw: parseFloat(e.currentTarget.value) ? `${mathRound(stateAsObj["pixels"].value / parseFloat(e.currentTarget.value), 3)}${stateAsObj["custom_ext"].value ? stateAsObj["custom_ext"].value : ''}` : '',
             }
           })
           return dispatch({

@@ -44,3 +44,5 @@ export const encodeSVG = (data: any) => {
 export const checkIfValidSVG = (svg: string) => {
   return svg.includes('<svg') && svg.includes('</svg>')
 }
+
+export const mathRound = (number: number, decimals: number) => +(Math.round(Number(number.toString() + "e+" + decimals.toString())) + "e-" + decimals)
