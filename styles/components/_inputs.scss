@@ -1,3 +1,20 @@
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+@keyframes to_color {
+  0% {
+    color: $white;
+  }
+  50% {
+    color: $brand-primary;
+  }
+  100% {
+    color: $white;
+  }
+}
 .input_field {
   display: flex;
   flex-direction: column;
@@ -27,7 +44,7 @@
   }
   .btn-settings {
     position: absolute;
-    top: 5px;
+    top: 4px;
     right: 0;
     padding: 0;
     border-radius: 8px 8px 0 0;
@@ -43,15 +60,34 @@
       padding: 4px 16px;
       width: 100%;
       background: none;
-      color: white;
       border: none;
       cursor: pointer;
       transition: all 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $white;
+      margin: 0;
       font-weight: $fw-medium;
+      font-size: rem(12px);
+      overflow: hidden;
+      &:after {
+        content: '';
+        position: absolute;
+        background-color: $white_rgba_01;
+        border-radius: 100px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0);
+      }
       &:focus {
-        color: $brand-primary;
-        transition: all 0.5s ease;
-        padding: 3px 16px 5px;
+        animation: to_color 0.5s linear;
+        &:after {
+          animation: ripple 0.5s linear;
+        }
       }
     }
   }
@@ -72,7 +108,7 @@ input {
   border: 1px solid $brand-primary;
   padding: 0 24px;
   display: flex;
-  margin-top: 8px;
+  margin: 4px 0 0;
   width: 100%;
   font-size: rem(14px);
   font-weight: $fw-bold;
@@ -92,7 +128,7 @@ textarea,
   border: 1px solid $brand-primary;
   padding: 8px 12px;
   display: flex;
-  margin-top: 8px;
+  margin: 4px 0 0;
   font-size: rem(14px);
   font-weight: $fw-bold;
   z-index: 10;

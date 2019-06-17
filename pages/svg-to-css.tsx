@@ -3,15 +3,7 @@ import Clipboard from 'react-clipboard.js';
 
 import Layout from '../components/Layout'
 import Container from '../components/Container'
-import { encodeSVG, checkIfValidSVG } from '../lib/helpers';
-
-declare module 'react' {
-  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    // extends React's HTMLAttributes
-    custom?: string;
-    columns?: string;
-  }
-}
+import { encodeSVG, checkIfValidSVG, inverseQuoteType } from '../lib/helpers';
 
 const SvgToCssPage: React.FunctionComponent = () => {
   const [svgInput, setSvgInput] = React.useState();
@@ -21,12 +13,14 @@ const SvgToCssPage: React.FunctionComponent = () => {
 
   const handleInputChange = (event: any) => {
     event.persist();
+    console.log(event.target.name);
     if (event.target.name = 'svgCode') {
       if (checkIfValidSVG(event.target.value)) {
         console.log('valid svg');
-        console.log(`"data:image/svg+xml,${encodeSVG(event.target.value)}"`);
-        setPureDataOutput(`"data:image/svg+xml,${encodeSVG(event.target.value)}"`);
-        setCssBackgroundOutput(`background-image: url("data:image/svg+xml,${encodeSVG(event.target.value)}");`);
+        
+        console.log(`"data:image/svg+xml,${inverseQuoteType(encodeSVG(event.target.value), 'single' )}"`);
+        setPureDataOutput(`"data:image/svg+xml,${inverseQuoteType(encodeSVG(event.target.value), 'single' )}"`);
+        setCssBackgroundOutput(`background-image: url("data:image/svg+xml,${inverseQuoteType(encodeSVG(event.target.value), 'single' )}");`);
         setSvgPreview(event.target.value);
       } else {
         setSvgPreview('');
@@ -45,7 +39,7 @@ const SvgToCssPage: React.FunctionComponent = () => {
   return (
     <Layout current="SVG to CSS" title="SVG to CSS | DVLP HAUS | toolbox for developers">
       <Container>
-        <div className="grid grid-2 svg__to__css " columns="4">
+        <div className="grid grid-2 svg__to__css">
           <div className="grid grid-1">
             <div className="input_field">
               <div className="btn-settings">

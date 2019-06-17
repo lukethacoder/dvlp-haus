@@ -1,10 +1,23 @@
-export const CapitaliseFirstLetter = (text: String) =>
+export const CapitaliseFirstLetter = (text: string) =>
   text.replace(/\w\S*/g, function(txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 
-export const Slugify = (text: String) => text.replace(/ /g, '_');
-export const UnSlugify = (text: String) => text.replace(/_/g, ' ');
+export const Slugify = (text: string) => text.replace(/ /g, '_');
+export const UnSlugify = (text: string) => text.replace(/_/g, ' ');
+
+export const inverseQuoteType = (text: string, type: string) => {
+  switch (type) {
+    case 'single': {
+      return text.replace(/"/g, "'");
+    }
+    case 'double': {
+      return text.replace(/'/g, '"');
+    }
+    default: 
+      console.log('invalid type: valid types are "single" or "double"')
+  }
+};
 
 export const MaxLengthString = (string: string, max_length: number) =>
   string.length > max_length ? string.substring(0, max_length - 3) + '...' : string;
