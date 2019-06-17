@@ -52,7 +52,7 @@ const SvgToCssPage: React.FunctionComponent = () => {
                 <textarea
                   value={svgInput}
                   name="svgCode"
-                  placeholder="Paste your <svg>here</svg>"
+                  placeholder="paste your <svg>here</svg>"
                   spellCheck={false}
                   onChange={handleInputChange}
                 ></textarea>

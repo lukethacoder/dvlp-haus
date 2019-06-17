@@ -2,11 +2,17 @@
   max-width: 1024px;
   margin: 96px auto 64px;
   background-color: $brand-tertiary;
-  padding: 48px;
+  padding: 24px;
   position: relative;
   z-index: 10;
+  @include media-breakpoint-up(sm) {
+    padding: 36px;
+  }
+  @include media-breakpoint-up(md) {
+    padding: 48px;
+  }
   &.page__useful_links,
   &.page__font_converter {
-    margin: 124px auto 0;
+    margin: 124px auto 64px;
   }
 }
