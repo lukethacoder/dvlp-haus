@@ -10,13 +10,13 @@ const ListItem: React.FunctionComponent<Props> = ({ data }) => {
   const [hasUserFlammed, setUserFlammed] = React.useState(false);
   const [isInfoOpen, setInfoOpen] = React.useState(false);
   
-  const handleAddFlame = (id: string) => {
+  // const handleAddFlame = (id: string) => {
     // console.log('add flame here 🔥', id)
     // setUsefulLinkFlame(id);
     // const newFlame = Number(flameCount) + 1;
     // incrementFlame(newFlame);
     // setUserFlammed(true);
-  }
+  // }
   const toggleInfo = (show: boolean) => {
     setInfoOpen(show);
   }
