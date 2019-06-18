@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { NextPage } from 'next'
+
 import Layout from '../components/Layout'
 import Container from '../components/Container'
 import { UsefulLinksProps } from '../interfaces'
