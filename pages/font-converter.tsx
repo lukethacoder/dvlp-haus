@@ -4,7 +4,6 @@ import Clipboard from 'react-clipboard.js';
 
 import Layout from '../components/Layout'
 import Container from '../components/Container'
-import { any, string } from 'prop-types';
 import { mathRound } from '../lib/helpers';
 
 interface InputVal {
