@@ -1,9 +1,11 @@
 const webpack = require('webpack');
+const withPlugins = require('next-compose-plugins');
 const withSass = require('@zeit/next-sass');
+const withFonts = require('next-fonts');
 
 require('dotenv').config();
 
-module.exports = withSass({
+const nextConfig = {
   webpack: config => {
     const env = Object.keys(process.env).reduce((acc, curr) => {
       acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
@@ -14,4 +16,6 @@ module.exports = withSass({
 
     return config;
   },
-});
+};
+
+module.exports = withPlugins([withSass, withFonts], nextConfig);

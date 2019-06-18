@@ -4,8 +4,6 @@ import Layout from '../components/Layout'
 import Container from '../components/Container'
 import { UsefulLinksProps } from '../interfaces'
 
-// import { CapitaliseFirstLetter } from '../lib/helpers';
-
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { loadFirebase } from '../lib/firebase';
 import ListItem from '../components/ListItem';
@@ -31,10 +29,6 @@ const WithInitialProps: NextPage<Props> = () => {
 
   let data: any = value;
   // console.log(data ? data.docs ? data.docs : '' : '');
-
-  error ? console.error(error) : '';
-  loading ? console.warn(loading) : '';
-  
   // let categories: any = data ? data.docs ? [...new Set(data.docs.map((item: UsefulLinksProps) => item.category))] : [] : [];
   
   // const changeCategory = async (changeTo: string) => {
