@@ -25,6 +25,7 @@
     "react-clipboard.js": "^2.0.12",
     "react-dom": "^16.7.0",
     "react-firebase-hooks": "^2.0.0",
+    "react-ga": "^2.5.7",
     "styled-components": "^4.3.1",
     "typescript": "^3.5.1"
   },

@@ -6,8 +6,8 @@ type Props = {
 }
 
 const ListItem: React.FunctionComponent<Props> = ({ data }) => {
-  const [flameCount, incrementFlame] = React.useState(data.flames);
-  const [hasUserFlammed, setUserFlammed] = React.useState(false);
+  // const [flameCount, incrementFlame] = React.useState(data.flames);
+  // const [hasUserFlammed, setUserFlammed] = React.useState(false);
   const [isInfoOpen, setInfoOpen] = React.useState(false);
   
   // const handleAddFlame = (id: string) => {
@@ -27,7 +27,7 @@ const ListItem: React.FunctionComponent<Props> = ({ data }) => {
       </a>
       <div className="links__meta">
         {/* <p onClick={() => handleAddFlame(data.id)} className={`flame ${hasUserFlammed ? 'flammed' : ''}`}> 🔥 {flameCount}</p> */}
-        <a className="url" href={`https://${data.url}`}>link</a>
+        <a className="url" href={`https://${data.url}`} target="_blank">link</a>
         <p className="info" onClick={() => toggleInfo(!isInfoOpen)} onMouseEnter={() => toggleInfo(true)} onMouseLeave={() => toggleInfo(false)}>info</p>
       </div>
       <div className={`desc ${isInfoOpen ? 'open' : ''}`}>
