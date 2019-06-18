@@ -1,0 +1,35 @@
+// --- Variables --- //
+
+// Typography //
+
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$font-family-serif: sans-serif;
+$font-family-monospace: monospace;
+$font-family-base: $font-family-sans-serif;
+
+$font-size-base: 16px;
+
+$fw-light: 400;
+$fw-regular: 500;
+$fw-medium: 600;
+$fw-bold: 700;
+$fw-black: 900;
+
+// Form Variables //
+
+$input__height: 48px;
+$input__top_margin: 28px;
+$input__bottom_margin: 4px;
+$input__label__top_init: 20px;
+$input__label__top_active: 2px;
+
+$input__border_width: 2px;
+
+$breakpoint: (
+  'xs': 0,
+  'sm': 576,
+  'md': 768,
+  'lg': 992,
+  'xl': 1200,
+  'xxl': 1439,
+);
