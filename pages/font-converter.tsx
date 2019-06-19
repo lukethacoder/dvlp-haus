@@ -1,10 +1,8 @@
 import * as React from 'react'
-import { Map } from 'immutable'
 import Clipboard from 'react-clipboard.js';
 
 import Layout from '../components/Layout'
 import Container from '../components/Container'
-import { mathRound } from '../lib/helpers';
 
 interface InputVal {
   [key: string]: {
@@ -13,44 +11,6 @@ interface InputVal {
     value: number | string
   }
 }
-// the initial state
-const initialState: InputVal = {
-  pixels: {
-    name: 'pixels',
-    raw: "16px",
-    value: 16,
-  },      
-  rem: {
-    name: 'rem',
-    raw: "1rem",
-    value: 1
-  }, 
-  em: {
-    name: 'em',
-    raw: "1em",
-    value: 1
-  },
-  custom: {
-    name: 'custom',
-    raw: "1",
-    value: 1
-  },
-  custom_ext: {
-    name: 'custom_ext',
-    raw: "dvlp",
-    value: "dvlp"
-  },
-  base: {
-    name: 'base',
-    raw: '16px',
-    value: 16
-  }
-}
-// const initialStateKeys: Array<string> = Object.keys(initialState);
-
-// reducer
-// const inputReducer = (allInputs: any, { field, value }: any) => allInputs.set(field, value);
-
 const FontConverterPage: React.FunctionComponent = () => {
   const [px, setPx] = React.useState(16);
   const [base, setBase] = React.useState(16);
