@@ -1,12 +1,17 @@
 body {
-  font-family: $font-family-base;
-  font-weight: $fw-bold;
-  background-color: $brand-secondary;
-  color: $brand-quaternary;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  * {
-    box-sizing: border-box;
-  }
+	font-family: $font-family-base;
+	font-weight: $fw-bold;
+	background-color: $brand-secondary;
+	color: $brand-quaternary;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	* {
+		box-sizing: border-box;
+	}
+}
+
+pre {
+	background-color: $brand-secondary;
+	padding: 24px;
 }

@@ -1,0 +1,34 @@
+.page__notes_wrapper {
+	display: flex;
+	flex-direction: column;
+	.btn-toggle {
+		width: 100%;
+		justify-content: flex-end;
+		align-items: flex-end;
+		display: flex;
+		p {
+			margin: 0 0 16px;
+			justify-content: flex-end;
+			align-items: flex-end;
+			cursor: pointer;
+			@include no_select;
+			@include trans;
+			&:hover {
+				span {
+					color: $brand-primary;
+					@include trans;
+				}
+			}
+			span {
+				@include trans;
+			}
+		}
+	}
+	.notes__markdown,
+	.notes__raw {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}
