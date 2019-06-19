@@ -99,6 +99,28 @@
       text-align: left;
       font-size: rem(18px);
     }
+    .input__wrapper {
+      position: relative;
+      .append__value {
+        position: absolute;
+        right: 1px;
+        top: 2px;
+        text-align: center;
+        height: 100%;
+        margin: -2px 0 -8px;
+        width: auto;
+        min-height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+          margin: 0;
+          color: $grey-dark;
+          font-size: rem(12px);
+          padding: 0 16px;
+        }
+      }
+    }
   }
 }
 input {
