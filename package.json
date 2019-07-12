@@ -30,8 +30,8 @@
     "typescript": "^3.5.3"
   },
   "devDependencies": {
+    "@types/react": "^16.8.23",
     "@types/node": "^12.6.2",
-    "@types/react": "^16.8.15",
     "@types/react-dom": "^16.0.11",
     "@types/styled-components": "^4.1.16",
     "babel-plugin-inline-react-svg": "^1.1.0",
