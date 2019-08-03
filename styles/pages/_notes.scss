@@ -1,3 +1,10 @@
+.notes__markdown {
+	// markdown specific styles
+	* {
+		text-transform: none;
+	}
+}
+
 .page__notes_wrapper {
 	display: flex;
 	flex-direction: column;

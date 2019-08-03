@@ -3,7 +3,7 @@ import ReactGA from 'react-ga'
 export const initGA = () => {
   let ga_tracking: any = process.env.GA_TRACKING;
   ReactGA.initialize(ga_tracking.toString(), {
-    testMode: false
+    testMode: true
   });
 }
 

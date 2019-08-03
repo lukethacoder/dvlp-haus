@@ -1,7 +1,7 @@
 import * as React from "react"
 import ReactDOM from "react-dom"
 import ReactMarkdown from "react-markdown"
-
+import Prism from "prismjs"
 import Link from "next/link"
 import { NextPage } from "next"
 
@@ -60,13 +60,7 @@ const NotesPage: NextPage<any> = () => {
 							view: <span>{view}</span>
 						</p>
 					</div>
-					<div
-						className={`notes__markdown ${
-							view === "pretty" || view === "both" ? "active" : ""
-						}`}
-					>
-						<ReactMarkdown source={notesData} />
-					</div>
+
 					<div
 						className={`notes__raw ${
 							view === "raw" || view === "both" ? "active" : ""
@@ -81,6 +75,13 @@ const NotesPage: NextPage<any> = () => {
 							spellCheck={true}
 						></textarea>
 					</div>
+				</div>
+				<div
+					className={`notes__markdown ${
+						view === "pretty" || view === "both" ? "active" : ""
+					}`}
+				>
+					<ReactMarkdown source={notesData} />
 				</div>
 			</Container>
 		</Layout>

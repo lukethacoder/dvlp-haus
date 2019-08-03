@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "^11.13.9",
+    "@types/prismjs": "^1.16.0",
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.0.11",
     "@types/styled-components": "^4.1.16",

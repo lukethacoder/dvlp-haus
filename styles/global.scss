@@ -1,3 +1,7 @@
+// module imports
+@import "../node_modules/prismjs/themes/prism-dark.css";
+// @import "../node_modules/prismjs/themes/prism-tomorrow.css";
+
 @import "./base/mixins.scss";
 @import "./base/functions.scss";
 @import "./base/variables.scss";
@@ -16,6 +20,3 @@
 @import "./pages/useful_links.scss";
 @import "./pages/font_converter.scss";
 @import "./pages/notes.scss";
-
-// module imports
-@import "../node_modules/prismjs/themes//prism-tomorrow.css";
