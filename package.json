@@ -16,7 +16,7 @@
     "dotenv": "^8.0.0",
     "firebase": "^6.1.1",
     "immutable": "^4.0.0-rc.12",
-    "next": "^9.0.3",
+    "next": "^9.0.4",
     "next-compose-plugins": "^2.2.0",
     "next-fonts": "^0.17.0",
     "next-offline": "^4.0.3",
