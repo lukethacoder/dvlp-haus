@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.8.25",
-    "@types/node": "^12.7.1",
+    "@types/node": "^12.7.2",
     "@types/react-dom": "^16.8.5",
     "@types/styled-components": "^4.1.18",
     "babel-plugin-inline-react-svg": "^1.1.0",
