@@ -27,7 +27,7 @@
     "react-firebase-hooks": "^2.0.0",
     "react-ga": "^2.6.0",
     "styled-components": "^4.3.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.6.3"
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
