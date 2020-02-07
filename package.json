@@ -14,7 +14,7 @@
     "@babel/core": "^7.7.2",
     "@zeit/next-sass": "^1.0.1",
     "dotenv": "^8.2.0",
-    "firebase": "^6.1.1",
+    "firebase": "^7.8.1",
     "immutable": "^4.0.0-rc.12",
     "next": "^9.0.5",
     "next-compose-plugins": "^2.2.0",
