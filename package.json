@@ -23,7 +23,7 @@
     "node-sass": "^4.12.0",
     "react": "^16.7.0",
     "react-clipboard.js": "^2.0.13",
-    "react-dom": "^16.7.0",
+    "react-dom": "^16.13.0",
     "react-firebase-hooks": "^2.0.0",
     "react-ga": "^2.6.0",
     "styled-components": "^4.4.0",
