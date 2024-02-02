@@ -45,12 +45,12 @@ export default function DevPage() {
           <section className='max-w-5xl mx-auto w-full px-4 mt-16'>
             <h2 className='text-2xl mb-4'>Button</h2>
             <div className="flex flex-wrap gap-4">
-              <Button variant='default'>variant='default'</Button>
-              <Button variant='secondary'>variant='secondary'</Button>
-              <Button variant='destructive'>variant='destructive'</Button>
-              <Button variant='ghost'>variant='ghost'</Button>
-              <Button variant='link'>variant='link'</Button>
-              <Button variant='outline'>variant='outline'</Button>
+              <Button variant='default'>variant=default</Button>
+              <Button variant='secondary'>variant=secondary</Button>
+              <Button variant='destructive'>variant=destructive</Button>
+              <Button variant='ghost'>variant=ghost</Button>
+              <Button variant='link'>variant=link</Button>
+              <Button variant='outline'>variant=outline</Button>
             </div>
           </section>
 
