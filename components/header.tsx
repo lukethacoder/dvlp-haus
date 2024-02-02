@@ -1,21 +1,24 @@
-'use client'
+import Link from "next/link";
 
 import { NavigationMenu } from "@/components/navigation-menu";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
+import { CommandPalette } from "@/components/command-palette";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   return (
-    <header className="flex justify-between w-full px-4 py-4">
-      <span className="flex items-center gap-4">
-        <h1 className="text-xl font-semibold">dvlp.haus</h1>
-        <NavigationMenu />
+    <header className="flex flex-col md:flex-row md:justify-between w-full px-2 py-2 gap-2 border-b">
+      <span className="flex items-center pl-2">
+        <Link href='/'>
+          <h1 className="text-xl font-semibold">dvlp.haus</h1>
+        </Link>
       </span>
-      <span>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label className='sr-only' htmlFor="search">Search</Label>
-          <Input id="search" type="text" placeholder="Search for a tool"/>
-        </div>
+      <span className="w-full md:w-auto flex flex-col md:flex-row gap-2">
+        <NavigationMenu />
+        <span className="flex gap-2">
+          <CommandPalette/>
+          <ThemeToggle/>
+        </span>
       </span>
     </header>
   )

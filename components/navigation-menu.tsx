@@ -1,69 +1,59 @@
-'use client';
+'use client'
 
-import {
-  NavigationMenu as UiNavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu';
-import Link from 'next/link';
+import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from './ui/button'
 
-const NAVIGATION_MENU: { title: string; href?: string; description: string; children?: { title: string; href: string; description: string }[] }[] = [
-  {
-    title: 'Home',
-    href: '/',
-    description: 'A modal dialog that interrupts the user with important content and expects a response.',
-  },
+const NAVIGATION_MENU: {
+  title: string
+  href: string
+}[] = [
   {
     title: 'Tools',
-    description: 'A modal dialog that interrupts the user with important content and expects a response.',
-    children: [
-      {
-        title: 'Font Converter',
-        href: '/font-converter',
-        description: 'A modal dialog that interrupts the user with important content and expects a response.',
-      },
-      {
-        title: 'SVG to CSS',
-        href: '/svg-to-css',
-        description: 'A modal dialog that interrupts the user with important content and expects a response.',
-      },
-    ],
+    href: '/tools',
   },
-];
+  {
+    title: 'About',
+    href: '/about',
+  },
+  {
+    title: 'Change log',
+    href: '/change-log',
+  },
+  {
+    title: 'Requests',
+    // TODO: set as Github issue
+    href: 'https://github.com/lukethacoder/dvlp-haus/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=',
+  },
+  {
+    title: 'Dev',
+    href: '/dev',
+  },
+]
 
 export function NavigationMenu() {
   return (
-    <UiNavigationMenu className='w-full'>
-      <NavigationMenuList>
-        {NAVIGATION_MENU.map((item) => (
-          <NavigationMenuItem key={item.title} className='w-full'>
-            {item.children ? (
-              <>
-                <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-                <NavigationMenuContent className="w-full">
-                  <ul className="flex flex-col gap-2 p-4">
-                    {item.children.map((child) => (
-                      <Link key={child.title} href={child.href} legacyBehavior passHref className='w-full'>
-                        <NavigationMenuLink className={`${navigationMenuTriggerStyle()} w-full`}>{child.title}</NavigationMenuLink>
-                      </Link>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </>
-            ) : (
-              item.href && (
-                <Link href={item.href} legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>{item.title}</NavigationMenuLink>
-                </Link>
-              )
-            )}
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-    </UiNavigationMenu>
-  );
+    <nav className='flex items-center'>
+      {NAVIGATION_MENU.map((item) =>
+        item.href.includes('https') ? (
+          <a
+            key={item.title}
+            href={item.href}
+            className={cn(buttonVariants({ variant: 'ghost', size: 'sm' }))}
+            target='_blank'
+          >
+            {item.title}
+          </a>
+        ) : (
+          <Link
+            key={item.title}
+            href={item.href}
+            className={cn(buttonVariants({ variant: 'ghost', size: 'sm' }))}
+          >
+            {item.title}
+          </Link>
+        )
+      )}
+    </nav>
+  )
 }
