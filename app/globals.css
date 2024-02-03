@@ -79,7 +79,7 @@
 
 /* all change log images should have rounded edges */
 .change-log img {
-  @apply rounded-lg mt-0;
+  @apply rounded-lg mt-0 border;
 }
 .change-log .change-log-content > *:first-child {
   @apply mt-0;
