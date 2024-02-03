@@ -48,8 +48,8 @@ function ChangeLogItem({
 export default function ChangeLogPage() {
   return (
     <>
-      <main className='w-full min-h-full flex flex-col'>
-        <span className='w-full px-4 max-w-5xl mx-auto flex flex-col prose flex-1'>
+      <main className='w-full min-h-full flex flex-col flex-1'>
+        <span className='w-full px-4 max-w-5xl mx-auto flex flex-col prose pb-12'>
           <h1 className='text-4xl font-medium mt-16 mb-2'>Change log</h1>
 
           <div className='change-log flex flex-col gap-2 py-2 px-2 pb-16'>
@@ -63,8 +63,8 @@ export default function ChangeLogPage() {
             ))}
           </div>
         </span>
-        <Footer />
       </main>
+      <Footer />
     </>
   )
 }

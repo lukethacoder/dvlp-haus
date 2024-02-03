@@ -55,7 +55,7 @@ export default async function ToolPage({ params }: PageProps) {
 
   return (
     <div>
-      <header className='w-full border-b px-4 py-4'>
+      <header className='w-full border-b px-4 pt-12 pb-8'>
         <h1 className='text-3xl font-semibold'>{name}</h1>
         {description && <p>{description}</p>}
       </header>

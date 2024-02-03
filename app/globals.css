@@ -58,6 +58,25 @@
   }
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4d7fff #ddd;
+}
+
+*::-webkit-scrollbar {
+  width: 0.42em;
+}
+ 
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid hsl(var(--card));
+  border-radius: 2px;
+}
+
 /* all change log images should have rounded edges */
 .change-log img {
   @apply rounded-lg mt-0;

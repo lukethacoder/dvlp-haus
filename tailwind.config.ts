@@ -73,6 +73,9 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      flex: {
+        '0': '1 0',
+      },
       typography: ({ theme }: typeof defaultTheme) => ({
         DEFAULT: {
           css: {
@@ -110,6 +113,10 @@ const config: Config = {
             '--tw-prose-invert-td-borders': theme('colors.foreground'),
             a: {
               borderRadius: theme('borderRadius.sm'),
+              transitionProperty:
+                'color, background-color, border-color, text-decoration-color, fill, stroke',
+              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+              transitionDuration: '150ms',
               '&:hover': {
                 color: 'hsl(var(--primary))',
               },

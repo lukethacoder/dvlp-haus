@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from './ui/button'
 
-const NAVIGATION_MENU: {
+export const NAVIGATION_MENU_ITEMS: {
   title: string
   href: string
 }[] = [
@@ -24,16 +24,20 @@ const NAVIGATION_MENU: {
     title: 'Requests',
     href: 'https://github.com/lukethacoder/dvlp-haus/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=',
   },
-  {
-    title: 'Dev',
-    href: '/dev',
-  },
+  ...(process.env.NODE_ENV === 'development'
+    ? [
+        {
+          title: 'Dev',
+          href: '/dev',
+        },
+      ]
+    : []),
 ]
 
 export function NavigationMenu() {
   return (
-    <nav className='flex items-center'>
-      {NAVIGATION_MENU.map((item) =>
+    <nav className='hidden md:flex items-center flex-wrap'>
+      {NAVIGATION_MENU_ITEMS.map((item) =>
         item.href.includes('https') ? (
           <a
             key={item.title}

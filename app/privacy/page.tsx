@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <main className='w-full h-full'>
-        <span className='w-full px-4 max-w-4xl mx-auto flex flex-col prose'>
+      <main className='w-full h-full flex-1'>
+        <span className='w-full px-4 max-w-4xl mx-auto flex flex-col prose pb-12'>
           <h1 className='text-4xl font-medium mt-16 mb-2'>Privacy</h1>
 
           <p>TODO:</p>

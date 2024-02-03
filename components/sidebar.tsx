@@ -14,7 +14,7 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <nav className='flex flex-col gap-1 py-2 px-2 border-r h-full'>
+    <nav className='flex flex-col gap-1 py-2 px-2'>
       {getEntries(getToolsByCategory(TOOLS))
         // hide categories that have no tools
         .filter(([_, category]) => category.length > 0)
@@ -23,8 +23,8 @@ export function Sidebar() {
           return (
             <ul key={key} className='flex flex-col py-2'>
               <li className='flex items-center gap-2 h-9 px-2'>
-                <CategoryIcon size={16} />
-                <span className='font-bold text-muted-foreground text-ellipsis overflow-hidden text-xs uppercase'>
+                <CategoryIcon size={16} className='w-4 h-4' />
+                <span className='flex-1 font-bold text-muted-foreground text-ellipsis overflow-hidden text-xs uppercase'>
                   {CATEGORIES[key].name}
                 </span>
               </li>

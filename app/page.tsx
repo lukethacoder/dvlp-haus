@@ -8,7 +8,7 @@ export const metadata: Metadata = SEO_DEFAULTS
 export default function Home() {
   return (
     <>
-      <main className='w-full px-4 flex h-full'>
+      <main className='w-full px-4 flex h-full flex-1'>
         <h1>home</h1>
       </main>
       <Footer />

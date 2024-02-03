@@ -31,8 +31,15 @@ export const CHANGE_LOG_CONTENT: { date: Date; content: ReactNode }[] = [
         </ul>
 
         <p>
-          If you're keen to see a specific tool added, feel free to open a
-          request.
+          If you're keen to see a specific tool added, feel free to{' '}
+          <a
+            href='https://github.com/lukethacoder/dvlp-haus/issues/new?assignees=&labels=&projects=&template=feature_request.md&title='
+            target='_blank'
+            rel='nofollow noreferrer'
+          >
+            open a request
+          </a>
+          .
         </p>
       </>
     ),

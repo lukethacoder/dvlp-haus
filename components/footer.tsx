@@ -25,8 +25,8 @@ const NAVIGATION = [
 
 export function Footer() {
   return (
-    <footer className='flex w-full justify-between px-4 py-4 gap-2 border-t'>
-      <ul className='flex gap-4 text-sm'>
+    <footer className='flex w-full justify-between items-center px-4 py-4 gap-2 border-t'>
+      <ul className='flex flex-wrap gap-x-4 gap-y-2 text-sm'>
         {NAVIGATION.map((item) => (
           <li key={item.href}>
             <Link
@@ -40,7 +40,7 @@ export function Footer() {
         ))}
       </ul>
 
-      <span className='text-sm'>
+      <span className='text-sm whitespace-nowrap'>
         made by{' '}
         <a
           href='https://lukesecomb.digital?utm_campaign=dvlp.haus'
