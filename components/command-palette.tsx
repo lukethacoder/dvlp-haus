@@ -37,7 +37,7 @@ export function CommandPalette() {
 
   return (
     <>
-      <Button variant='secondary' className='text-sm w-full md:w-auto justify-between' onClick={() => setOpen((open) => !open)}>
+      <Button variant='outline' className='text-sm w-full md:w-auto justify-between' onClick={() => setOpen((open) => !open)}>
         <span className='pr-6'>Search</span>
         <span className='text-xs text-muted-foreground'>
           Press{' '}

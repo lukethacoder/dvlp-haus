@@ -1,10 +1,14 @@
-import { ITool } from "@/lib/tools"
+import { ITool } from '@/lib/tools'
+import { Client } from './client'
+import { Suspense } from 'react'
 
-export function Component() {
+function Component() {
   return (
-    <div>
-      <h2>the svg-to-base64 tool</h2>
-    </div>
+    <span>
+      <Suspense>
+        <Client />
+      </Suspense>
+    </span>
   )
 }
 
