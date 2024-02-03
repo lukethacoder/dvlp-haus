@@ -1,9 +1,6 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  '@hookform/resolvers':
-    specifier: ^3.3.4
-    version: 3.3.4(react-hook-form@7.50.0)
   '@radix-ui/react-dialog':
     specifier: ^1.0.5
     version: 1.0.5(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
@@ -55,20 +52,17 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
-  react-hook-form:
-    specifier: ^7.50.0
-    version: 7.50.0(react@18.2.0)
   tailwind-merge:
     specifier: ^2.2.1
     version: 2.2.1
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.1)
-  zod:
-    specifier: ^3.22.4
-    version: 3.22.4
 
 devDependencies:
+  '@tailwindcss/typography':
+    specifier: ^0.5.10
+    version: 0.5.10(tailwindcss@3.4.1)
   '@types/node':
     specifier: ^20
     version: 20.11.8
@@ -177,14 +171,6 @@ packages:
 
   /@floating-ui/utils@0.2.1:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
-    dev: false
-
-  /@hookform/resolvers@3.3.4(react-hook-form@7.50.0):
-    resolution: {integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==}
-    peerDependencies:
-      react-hook-form: ^7.0.0
-    dependencies:
-      react-hook-form: 7.50.0(react@18.2.0)
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:
@@ -1221,6 +1207,18 @@ packages:
   /@tabler/icons@2.47.0:
     resolution: {integrity: sha512-4w5evLh+7FUUiA1GucvGj2ReX2TvOjEr4ejXdwL/bsjoSkof6r1gQmzqI+VHrE2CpJpB3al7bCTulOkFa/RcyA==}
     dev: false
+
+  /@tailwindcss/typography@0.5.10(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-Pe8BuPJQJd3FfRnm6H0ulKIGoMEQS+Vq01R6M5aCrFB/ccR/shT+0kXLjouGC1gFLm9hopTFN+DMP0pfwRWzPw==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      lodash.castarray: 4.4.0
+      lodash.isplainobject: 4.0.6
+      lodash.merge: 4.6.2
+      postcss-selector-parser: 6.0.10
+      tailwindcss: 3.4.1
+    dev: true
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
@@ -2702,6 +2700,14 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash.castarray@4.4.0:
+    resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
+    dev: true
+
+  /lodash.isplainobject@4.0.6:
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
+    dev: true
+
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -3048,6 +3054,14 @@ packages:
       postcss: 8.4.33
       postcss-selector-parser: 6.0.15
 
+  /postcss-selector-parser@6.0.10:
+    resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
+    engines: {node: '>=4'}
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
+    dev: true
+
   /postcss-selector-parser@6.0.15:
     resolution: {integrity: sha512-rEYkQOMUCEMhsKbK66tbEU9QVIxbhN18YiniAwA7XQYTVBqrBy+P2p5JcdqsHgKM2zWylp8d7J6eszocfds5Sw==}
     engines: {node: '>=4'}
@@ -3103,15 +3117,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
-
-  /react-hook-form@7.50.0(react@18.2.0):
-    resolution: {integrity: sha512-AOhuzM3RdP09ZCnq+Z0yvKGHK25yiOX5phwxjV9L7U6HMla10ezkBnvQ+Pk4GTuDfsC5P2zza3k8mawFwFLVuQ==}
-    engines: {node: '>=12.22.0'}
-    peerDependencies:
-      react: ^16.8.0 || ^17 || ^18
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:
@@ -3786,10 +3791,6 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-  /zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
-    dev: false
 
 settings:
   autoInstallPeers: true

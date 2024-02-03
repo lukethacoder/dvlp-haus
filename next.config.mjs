@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // re-enable for static export (will need to remove server actions)
-  output: 'export',
-};
+  // re-enable for static export
+  // output: 'export',
+}
 
-export default nextConfig;
+export default nextConfig

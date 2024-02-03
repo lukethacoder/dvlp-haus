@@ -1,62 +1,70 @@
+import { ReactNode } from 'react'
+import { Metadata } from 'next'
+
+import { SEO_DEFAULTS, SEO_TITLE_EXTENSION } from '@/lib/constants'
 import { Footer } from '@/components/footer'
-import { Icon360 } from '@tabler/icons-react'
 
-function ChangeLogItem() {
+import { CHANGE_LOG_CONTENT } from './content'
+
+export const metadata: Metadata = {
+  ...SEO_DEFAULTS,
+  title: `Change log ${SEO_TITLE_EXTENSION}`,
+}
+
+const dateFormat = new Intl.DateTimeFormat('en-AU', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+})
+
+function ChangeLogItem({
+  children,
+  releaseDate,
+}: {
+  releaseDate: Date
+  children: ReactNode
+}) {
+  const dateTime = new Date(
+    releaseDate.getTime() - releaseDate.getTimezoneOffset() * 60000
+  )
+    .toISOString()
+    .split('T')[0]
+
   return (
-    <li className='relative flex flex-col md:flex-row'>
-      <div className='w-full md:w-2/5'>
-        <span className='md:sticky top-0 py-4'>March 2, 2024</span>
+    <div className='relative flex flex-col md:flex-row border-b py-16'>
+      <div className='w-full md:w-2/5 pb-4'>
+        <time
+          dateTime={dateTime}
+          className='md:sticky top-0 py-4 text-sm text-muted-foreground'
+        >
+          {dateFormat.format(releaseDate)}
+        </time>
       </div>
-      <div className='w-full md:w-3/5'>
-        <h3 className='flex text-2xl font-semibold'>
-          <Icon360 className='mt-1 mr-2' />
-          Title of Update
-        </h3>
-
-        <p>Content goes here</p>
-
-        <p>
-          Esse quis sint eiusmod est deserunt. Consequat duis aliqua consectetur
-          in deserunt est incididunt consequat est consequat. Deserunt sint
-          eiusmod enim et cupidatat tempor consequat ad consequat et dolore
-          consequat. Ad esse enim cillum incididunt labore laboris. Non
-          consequat ad fugiat proident. Minim laborum dolor cupidatat deserunt
-          anim est consectetur nulla ad excepteur aute.
-        </p>
-
-        <p>
-          Esse ex culpa laboris duis adipisicing excepteur incididunt dolor
-          ipsum dolor tempor enim. Eiusmod non commodo laborum laborum irure.
-          Adipisicing qui reprehenderit commodo labore nisi. Reprehenderit
-          exercitation ullamco ullamco deserunt labore enim et proident amet
-          sint consequat minim dolor.
-        </p>
-        <p>
-          Tempor cupidatat laborum ad incididunt cillum ex. Non aute deserunt
-          enim pariatur consequat ipsum minim et qui tempor fugiat amet
-          excepteur. Culpa cillum consectetur dolor dolore sint exercitation
-          eiusmod est fugiat qui. Ea qui id et minim do aliquip velit veniam
-          eiusmod aliqua voluptate ut cillum ipsum.
-        </p>
-      </div>
-    </li>
+      <div className='change-log-content w-full md:w-3/5'>{children}</div>
+    </div>
   )
 }
 
 export default function ChangeLogPage() {
   return (
     <>
-      <section>
-        <ol className='flex flex-col gap-8 py-2 px-2 border-r h-full'>
-          <ChangeLogItem />
-          <ChangeLogItem />
-          <ChangeLogItem />
-          <ChangeLogItem />
-          <ChangeLogItem />
-          <ChangeLogItem />
-        </ol>
-      </section>
-      <Footer/>
+      <main className='w-full min-h-full flex flex-col'>
+        <span className='w-full px-4 max-w-5xl mx-auto flex flex-col prose flex-1'>
+          <h1 className='text-4xl font-medium mt-16 mb-2'>Change log</h1>
+
+          <div className='change-log flex flex-col gap-2 py-2 px-2 pb-16'>
+            {CHANGE_LOG_CONTENT.map((item, key) => (
+              <ChangeLogItem
+                key={`${key}-${item.date}`}
+                releaseDate={item.date}
+              >
+                {item.content}
+              </ChangeLogItem>
+            ))}
+          </div>
+        </span>
+        <Footer />
+      </main>
     </>
   )
 }

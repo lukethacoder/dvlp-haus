@@ -1,14 +1,24 @@
-import { Footer } from "@/components/footer";
+import { Metadata } from 'next'
+
+import { SEO_DEFAULTS, SEO_TITLE_EXTENSION } from '@/lib/constants'
+import { Footer } from '@/components/footer'
+
+export const metadata: Metadata = {
+  ...SEO_DEFAULTS,
+  title: `Privacy ${SEO_TITLE_EXTENSION}`,
+}
 
 export default function PrivacyPage() {
   return (
     <>
-      <div className='max-w-4xl w-full mx-auto pt-24'>
-        <h1 className="text-3xl font-semibold mb-4">Privacy</h1>
+      <main className='w-full h-full'>
+        <span className='w-full px-4 max-w-4xl mx-auto flex flex-col prose'>
+          <h1 className='text-4xl font-medium mt-16 mb-2'>Privacy</h1>
 
-        <p>Culpa ex proident magna eiusmod cillum aliqua dolore anim mollit ad. Dolore do deserunt consectetur nulla culpa et do. Anim ex cillum culpa mollit reprehenderit non nostrud veniam in quis officia sunt. Voluptate adipisicing do id deserunt. Deserunt ad dolore ut proident ea dolor consequat consequat Lorem deserunt. Exercitation Lorem nulla velit ex ut irure eu culpa ad ex et reprehenderit ad incididunt. Culpa ad consectetur qui nulla nisi officia.</p>
-      </div>
-      <Footer/>
+          <p>TODO:</p>
+        </span>
+      </main>
+      <Footer />
     </>
   )
 }

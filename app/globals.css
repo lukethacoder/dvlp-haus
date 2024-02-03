@@ -58,6 +58,14 @@
   }
 }
 
+/* all change log images should have rounded edges */
+.change-log img {
+  @apply rounded-lg mt-0;
+}
+.change-log .change-log-content > *:first-child {
+  @apply mt-0;
+}
+
 .svg-preview svg {
   width: 100%;
   height: 100%;

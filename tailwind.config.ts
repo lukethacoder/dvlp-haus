@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
-const config = {
+const config: Config = {
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -72,9 +73,60 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      typography: ({ theme }: typeof defaultTheme) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': theme('colors.foreground'),
+            '--tw-prose-headings': theme('colors.foreground'),
+            '--tw-prose-lead': theme('colors.foreground'),
+            '--tw-prose-links': theme('colors.foreground'),
+            '--tw-prose-bold': theme('colors.foreground'),
+            '--tw-prose-counters': theme('colors.primary'),
+            '--tw-prose-bullets': theme('colors.primary'),
+            '--tw-prose-hr': theme('colors.primary'),
+            '--tw-prose-quotes': theme('colors.foreground'),
+            '--tw-prose-quote-borders': theme('colors.primary'),
+            '--tw-prose-captions': theme('colors.foreground'),
+            '--tw-prose-code': theme('colors.foreground'),
+            '--tw-prose-pre-code': theme('colors.foreground'),
+            '--tw-prose-pre-bg': theme('colors.secondary.DEFAULT'),
+            '--tw-prose-th-borders': theme('colors.primary'),
+            '--tw-prose-td-borders': theme('colors.pink[200]'),
+            '--tw-prose-invert-body': theme('colors.pink[200]'),
+            '--tw-prose-invert-headings': theme('colors.white'),
+            '--tw-prose-invert-lead': theme('colors.primary'),
+            '--tw-prose-invert-links': theme('colors.white'),
+            '--tw-prose-invert-bold': theme('colors.white'),
+            '--tw-prose-invert-counters': theme('colors.primary'),
+            '--tw-prose-invert-bullets': theme('colors.primary'),
+            '--tw-prose-invert-hr': theme('colors.foreground'),
+            '--tw-prose-invert-quotes': theme('colors.background'),
+            '--tw-prose-invert-quote-borders': theme('colors.foreground'),
+            '--tw-prose-invert-captions': theme('colors.primary'),
+            '--tw-prose-invert-code': theme('colors.white'),
+            '--tw-prose-invert-pre-code': theme('colors.primary'),
+            '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
+            '--tw-prose-invert-th-borders': theme('colors.primary'),
+            '--tw-prose-invert-td-borders': theme('colors.foreground'),
+            a: {
+              borderRadius: theme('borderRadius.sm'),
+              '&:hover': {
+                color: 'hsl(var(--primary))',
+              },
+              '&:focus-visible': {
+                '--tw-ring-offset-width': '2px',
+                // boxShadow:
+                //   'hsl(var(--primary)) 0px 0px 0px 0px, hsl(var(--ring)) 0px 0px 0px 2px, rgba(0, 0, 0, 0) 0px 0px 0px 0px',
+                outline: '2px solid hsl(var(--ring))',
+                outlineOffset: 'var(--tw-ring-offset-width)',
+              },
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [require('tailwindcss-animate')],
-} satisfies Config
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+}
 
 export default config

@@ -22,7 +22,6 @@ const NAVIGATION_MENU: {
   },
   {
     title: 'Requests',
-    // TODO: set as Github issue
     href: 'https://github.com/lukethacoder/dvlp-haus/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=',
   },
   {
