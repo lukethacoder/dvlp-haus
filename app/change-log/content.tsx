@@ -16,8 +16,8 @@ export const CHANGE_LOG_CONTENT: { date: Date; content: ReactNode }[] = [
         />
         <h2>New Build: Initial Release</h2>
         <p>
-          After many years of neglect we're back to build dvlp.haus into the
-          website it was meant to be.
+          After many years of neglect we&apos;re back to build dvlp.haus into
+          the website it was meant to be.
         </p>
 
         <p>Initial release includes the two tools from the original build:</p>
@@ -31,7 +31,7 @@ export const CHANGE_LOG_CONTENT: { date: Date; content: ReactNode }[] = [
         </ul>
 
         <p>
-          If you're keen to see a specific tool added, feel free to{' '}
+          If you&apos;re keen to see a specific tool added, feel free to{' '}
           <a
             href='https://github.com/lukethacoder/dvlp-haus/issues/new?assignees=&labels=&projects=&template=feature_request.md&title='
             target='_blank'

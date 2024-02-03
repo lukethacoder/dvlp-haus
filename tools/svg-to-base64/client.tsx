@@ -18,7 +18,6 @@ import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 import { Textarea } from '@/components/ui/textarea'
 import { checkIfValidSvg, encodeSvg } from './utils'
-import { FormMessage } from '@/components/ui/form'
 
 function InputButton({
   suffix,

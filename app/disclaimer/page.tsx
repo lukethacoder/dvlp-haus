@@ -18,8 +18,8 @@ export default function DisclaimerPage() {
           <h2>Information on this site</h2>
           <p>
             While we strive to provide accurate information and tools on
-            dvlp.haus ("this site"), we cannot guarantee their absolute
-            correctness.
+            dvlp.haus (&quot;this site&quot;), we cannot guarantee their
+            absolute correctness.
           </p>
           <p>
             Please note that you use any tools available here at your own risk.

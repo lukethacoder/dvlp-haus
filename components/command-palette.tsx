@@ -70,6 +70,7 @@ export function CommandPalette() {
 
               return (
                 <CommandGroup
+                  key={key}
                   heading={
                     <span className='flex items-center'>
                       <CategoryIcon size={12} />
