@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 346.8 77.2% 49.8%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 95%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 346.8 77.2% 49.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  code, kbd, samp, pre {
+    @apply font-mono;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4d7fff #ddd;
+}
+
+*::-webkit-scrollbar {
+  width: 0.42em;
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid hsl(var(--card));
+  border-radius: 2px;
+}
+
+.hover-card {
+  position: relative;
+  overflow: hidden;
+  padding: theme('margin.4') theme('margin.16') theme('margin.4')
+    theme('margin.4');
+  border-color: hsl(var(--border));
+  border-width: theme('borderWidth.DEFAULT');
+  border-style: solid;
+  transition: border 0.15s cubic-bezier(0.4, 0, 0.6, 1) 0ms,
+    background-color 0.15s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+.hover-card:hover,
+.hover-card:focus-visible {
+  border-color: hsl(var(--primary));
+}
+.hover-card .hover-block {
+  position: absolute;
+  background-color: hsl(var(--primary));
+  right: calc(-100% + theme('margin.8'));
+  width: 100%;
+  height: 100%;
+  top: 0;
+  translate: calc(0% + theme('margin.16') + 36px) 0;
+  /* translate: 0%; */
+  transform: skew(-21deg);
+  transition: translate 0.15s cubic-bezier(0.4, 0, 0.6, 1) 0ms,
+    background-color 0.15s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+.hover-card:focus-visible .hover-block,
+.hover-card:hover .hover-block {
+  position: absolute;
+  background-color: hsl(var(--primary));
+  translate: 0%;
+  transform-origin: right top;
+  transition: translate 0.15s cubic-bezier(0.4, 0, 0.6, 1) 0ms,
+    background-color 0.15s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+
+/* all change log images should have rounded edges */
+.change-log img {
+  @apply rounded-lg mt-0 border;
+}
+.change-log .change-log-content > *:first-child {
+  @apply mt-0;
+}
+
+.svg-preview svg {
+  width: 100%;
+  height: 100%;
+}
