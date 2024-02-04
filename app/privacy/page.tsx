@@ -24,12 +24,13 @@ export default function PrivacyPage() {
           </p>
           <p>
             Data forwarded to the server serves exclusively for the execution of
-            the tool's processing, such as data conversion, encoding,
+            the tool&apos;s processing, such as data conversion, encoding,
             calculating, etc., and will not be employed for any alternative
             purpose. The transmitted data will be promptly obliterated upon
-            completion of the tool's processing, and no data will be retained.
-            Furthermore, rest assured that we refrain from scrutinizing the
-            contents of any data or files transmitted to our server.
+            completion of the tool&apos;s processing, and no data will be
+            retained. Furthermore, rest assured that we refrain from
+            scrutinizing the contents of any data or files transmitted to our
+            server.
           </p>
 
           <h2>Communication</h2>
