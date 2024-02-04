@@ -227,22 +227,68 @@ export function Client() {
             <code>ratioWidth</code> and <code>ratioHeight</code>.
           </p>
 
-          {/* TODO: write up logic for aspect ratio calculations */}
-          {/* <h4 className='text-lg'>px</h4>
+          <h4>gcd()</h4>
           <p>
-            when changed, adjusts the <code>rem</code> and <code>em</code>{' '}
-            values by taking the <code>px</code> value and dividing by the{' '}
-            <code>baseFontSize</code>.
+            Greatest Common Divisor (GCD) is the highest number that is evenly
+            divisible by both numbers.
           </p>
-          <code>rem = px / baseFontSize</code>
+          <pre>
+            {`const gcd = (a: number, b: number): number => (b == 0 ? a : gcd(b, a % b))`}
+          </pre>
 
-          <h4 className='text-lg'>rem/em</h4>
+          <h4>closestAspectRatio()</h4>
+          <pre>
+            {`function closestAspectRatio(width: number, height: number) {
+  const _gcd = gcd(width, height)
+  const ratioWidth = width / _gcd
+  const ratioHeight = height / _gcd
+  const decimal = ratioWidth / ratioHeight
+  return {
+    ratioWidth,
+    ratioHeight,
+    decimal,
+  }
+}`}
+          </pre>
           <p>
-            when changed, adjusts the <code>px</code> value by taking the{' '}
-            <code>rem</code>/<code>em</code> value and multiplying by the{' '}
-            <code>baseFontSize</code>.
+            This method calculates the closest aspect ratio given the{' '}
+            <code>width</code> and <code>width</code> values. It is used when
+            either <code>height</code> or <code>width</code> are adjusted.
           </p>
-          <code>px = rem * baseFontSize</code> */}
+
+          <h4 className='text-lg'>width</h4>
+          <p>
+            when changed, adjusts the <code>ratioHeight</code> and{' '}
+            <code>ratioHeight</code> values using the above{' '}
+            <code>closestAspectRatio()</code> method.
+          </p>
+          <pre>{`const { 
+  ratioWidth,
+  ratioHeight
+} = closestAspectRatio(newWidthValue, height)`}</pre>
+
+          <h4 className='text-lg'>height</h4>
+          <p>
+            when changed, adjusts the <code>ratioHeight</code> and{' '}
+            <code>ratioHeight</code> values using the above{' '}
+            <code>closestAspectRatio()</code> method.
+          </p>
+          <pre>{`const { 
+  ratioWidth,
+  ratioHeight
+} = closestAspectRatio(width, newHeightValue)`}</pre>
+
+          <h4 className='text-lg'>ratioWidth</h4>
+          <p>
+            when changed, adjusts the <code>width</code> value.
+          </p>
+          <code>{`const width = (height * newRatioWidthValue) / ratioHeight`}</code>
+
+          <h4 className='text-lg'>ratioHeight</h4>
+          <p>
+            when changed, adjusts the <code>height</code> value.
+          </p>
+          <code>{`const height = (width * newRatioHeightValue) / ratioWidth`}</code>
         </CardContent>
       </Card>
     </span>
