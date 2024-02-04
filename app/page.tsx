@@ -73,7 +73,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className='border-t w-full pt-16 px-4'>
+        <section className='border-t w-full pt-16 pb-12 px-4'>
           <span className='w-full flex flex-col max-w-5xl mx-auto'>
             <h3 className='text-2xl md:text-3xl font-medium text-center mb-8 px-4'>
               Powerful suite of developer tools

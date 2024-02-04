@@ -28,9 +28,6 @@ export async function generateMetadata({
     ...SEO_DEFAULTS,
     title: `${toolData.name} ${SEO_TITLE_EXTENSION}`,
     description: toolData.description,
-    // openGraph: {
-    //   images: ['/some-specific-page-image.jpg', ...previousImages],
-    // },
   }
 }
 
@@ -56,8 +53,9 @@ export default async function ToolPage({ params }: PageProps) {
   return (
     <div>
       <header className='w-full border-b px-4 pt-12 pb-8'>
-        <h1 className='text-3xl font-semibold'>{name}</h1>
+        <h1 className='text-3xl font-bold'>{name}</h1>
         {description && <p>{description}</p>}
+        <img className='max-w-xl mt-2' src={`/tools/${slug}/opengraph-image`} />
       </header>
       <Component />
     </div>

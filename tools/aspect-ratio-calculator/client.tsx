@@ -223,7 +223,7 @@ export function Client() {
         <CardContent className='prose'>
           <p>
             Aspect Ratio Calculate runs various calculations to dynamically
-            calculate <code>width</code> and <code>height</code> or
+            calculate <code>width</code> and <code>height</code> or{` `}
             <code>ratioWidth</code> and <code>ratioHeight</code>.
           </p>
 

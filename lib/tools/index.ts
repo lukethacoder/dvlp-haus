@@ -17,27 +17,50 @@ export const CATEGORY_KEYS = [
 ] as const
 
 export interface ICategory {
-  name: string
-  icon: (props: TablerIconsProps) => ReactNode
+  readonly name: string
+  readonly icon: (props: TablerIconsProps) => ReactNode
+  readonly iconRef: URL
 }
 
 export const CATEGORIES: Record<(typeof CATEGORY_KEYS)[number], ICategory> = {
   converters: {
     name: 'Converters',
     icon: IconSwitchHorizontal,
+    iconRef: new URL(
+      '../../node_modules/@tabler/icons/icons/switch-horizontal.svg',
+      import.meta.url
+    ),
   },
   'encoders-decoders': {
     name: 'Encoders / Decoders',
     icon: IconTransform,
+    iconRef: new URL(
+      '../../node_modules/@tabler/icons/icons/transform.svg',
+      import.meta.url
+    ),
   },
   math: {
     name: 'Math',
     icon: IconMath,
+    iconRef: new URL(
+      '../../node_modules/@tabler/icons/icons/math.svg',
+      import.meta.url
+    ),
   },
   other: {
     name: 'Other',
     icon: IconQuestionMark,
+    iconRef: new URL(
+      '../../node_modules/@tabler/icons/icons/question-mark.svg',
+      import.meta.url
+    ),
   },
+}
+
+export const isValidCategoryName = (
+  stringValue: string
+): stringValue is keyof typeof CATEGORIES => {
+  return Object.hasOwn(CATEGORIES, stringValue)
 }
 
 export const getToolsByCategory = (
@@ -76,5 +99,6 @@ export interface ITool {
   readonly name: string
   readonly description: string
   readonly category: (typeof CATEGORY_KEYS)[number]
+  readonly openGraphFontSize?: number
   component: ComponentType<any>
 }

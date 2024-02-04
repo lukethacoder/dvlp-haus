@@ -13,7 +13,7 @@ export function Header() {
           href='/'
           className='ring-offset-background rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0'
         >
-          <h1 className='text-xl font-semibold'>dvlp.haus</h1>
+          <h1 className='text-xl font-bold'>dvlp.haus</h1>
         </Link>
         <NavigationMenu />
       </span>

@@ -1,18 +1,29 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Cabin, Fira_Code } from 'next/font/google'
 import './globals.css'
 
+import { cn } from '@/lib/utils'
 import { Header } from '@/components/header'
 import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/components/theme-provider'
-import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 
-const inter = Inter({ subsets: ['latin'] })
+const rubik = Cabin({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+})
+const firaCode = Fira_Code({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'dvlp.haus',
   description: 'Toolbox for Developers',
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#0c0a09' },
+    { media: '(prefers-color-scheme: light)', color: '#e11d48' },
+  ],
 }
 
 export default function RootLayout({
@@ -23,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} bg-background min-h-dvh flex flex-col`}
+        className={`${rubik.className} bg-background min-h-dvh flex flex-col`}
       >
         <ThemeProvider
           attribute='class'

@@ -59,6 +59,19 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      fontFamily: {
+        mono: [
+          'Fira Code',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'Liberation Mono',
+          'Courier New',
+          'monospace',
+        ],
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -130,6 +143,7 @@ const config: Config = {
             },
             code: {
               // color: 'var(--tw-prose-code)',
+              fontWeight: theme('fontWeight.400'),
               backgroundColor: 'hsl(var(--secondary))',
               paddingTop: theme('margin.1'),
               paddingBottom: theme('margin.1'),

@@ -17,5 +17,6 @@ export default class Tool implements ITool {
   name = 'SVG to base64'
   description = 'Convert SVG markup to Base64. Handy to convert SVGs to CSS.'
   readonly category = 'converters'
+  readonly openGraphFontSize = 172
   component = Component
 }
