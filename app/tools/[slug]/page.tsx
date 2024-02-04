@@ -55,7 +55,6 @@ export default async function ToolPage({ params }: PageProps) {
       <header className='w-full border-b px-4 pt-12 pb-8'>
         <h1 className='text-3xl font-bold'>{name}</h1>
         {description && <p>{description}</p>}
-        <img className='max-w-xl mt-2' src={`/tools/${slug}/opengraph-image`} />
       </header>
       <Component />
     </div>
