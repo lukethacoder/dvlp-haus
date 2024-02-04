@@ -191,7 +191,7 @@ export function Client() {
                 </h3>
                 <span className='svg-preview flex items-center justify-center relative rounded-md border border-input bg-background p-8'>
                   <span
-                    className='text-secondary w-full h-full'
+                    className='text-foreground w-full h-full'
                     dangerouslySetInnerHTML={{
                       __html: svgInputValidated ? svgInputValidated : '',
                     }}
@@ -200,6 +200,36 @@ export function Client() {
               </span>
             </div>
           </CardHeader>
+        </Card>
+      </div>
+      <div className='w-full max-w-7xl flex flex-col gap-4'>
+        <Card className='w-full'>
+          <CardHeader>
+            <CardTitle>About</CardTitle>
+          </CardHeader>
+          <CardContent className='prose'>
+            <p>SVG to base64 uses regex to encode the provided SVG input.</p>
+            <pre>{`const encodeSvg = (data: string) => {
+  const symbols = /[${'\\'}r${'\\'}n%#()<>?\[\\\]^\`{|}]/g
+
+  data = data.replace(/'/g, '"')
+  data = data.replace(/>\s{1,}</g, '><')
+  data = data.replace(/\s{2,}/g, ' ')
+
+  return data.replace(symbols, encodeURIComponent)
+}`}</pre>
+            <p>
+              The SVG input is purified at runtime using{' '}
+              <a
+                href='https://github.com/cure53/DOMPurify'
+                target='_blank'
+                rel='nofollow noreferrer'
+              >
+                DOMPurify
+              </a>{' '}
+              before being injected into the DOM as a live preview.
+            </p>
+          </CardContent>
         </Card>
       </div>
     </span>

@@ -38,7 +38,16 @@ export function ConversionTable({
     <Table>
       <TableCaption>
         Font conversion table showing the different rem values given standard px
-        font sizes as well as default <a href='https://tailwindcss.com/docs/font-size' target='_blank'>TailwindCSS</a> class names.
+        font sizes as well as default{' '}
+        <a
+          href='https://tailwindcss.com/docs/font-size'
+          target='_blank'
+          rel='nofollow noreferrer'
+          className='underline rounded-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0'
+        >
+          TailwindCSS
+        </a>{' '}
+        class names.
       </TableCaption>
       <TableHeader>
         <TableRow>

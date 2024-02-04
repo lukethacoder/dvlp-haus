@@ -14,7 +14,7 @@ export function AllTools() {
 
           return (
             <li key={key}>
-              <h3 className='flex items-center text-xl font-medium mb-2'>
+              <h3 className='flex items-center text-sm md:text-md font-medium mb-2'>
                 <CategoryIcon size={20} />
                 <span className='ml-2'>{CATEGORIES[key].name}</span>
               </h3>
@@ -25,8 +25,10 @@ export function AllTools() {
                     href={`/tools/${item.slug}`}
                     className='hover-card w-full h-full rounded flex flex-col ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0'
                   >
-                    <span className='font-medium text-lg'>{item.name}</span>
-                    <span className='text-muted-foreground'>
+                    <span className='font-medium text-md md:text-lg'>
+                      {item.name}
+                    </span>
+                    <span className='text-muted-foreground text-sm'>
                       {item.description}
                     </span>
                     <span className='hover-block'></span>

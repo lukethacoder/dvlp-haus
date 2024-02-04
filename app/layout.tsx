@@ -5,6 +5,8 @@ import './globals.css'
 import { Header } from '@/components/header'
 import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/components/theme-provider'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,8 +31,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <a
+            href='#main'
+            className={cn(
+              buttonVariants(),
+              'absolute top-2 left-2 opacity-0 pointer-events-none focus-visible:pointer-events-auto focus-visible:opacity-100'
+            )}
+          >
+            Skip to main content
+          </a>
           <Header />
-          {children}
+          <span id='main' className='contents'>
+            {children}
+          </span>
           <Toaster />
         </ThemeProvider>
       </body>

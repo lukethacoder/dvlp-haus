@@ -283,6 +283,35 @@ export function Client() {
           <ConversionTable baseFontSize={componentState.baseFontSize} />
         </CardContent>
       </Card>
+
+      <Card className='w-full max-w-4xl'>
+        <CardHeader>
+          <CardTitle>About</CardTitle>
+        </CardHeader>
+        <CardContent className='prose'>
+          <p>
+            Font Converter runs simple equations to calculate <code>px</code>,{' '}
+            <code>em</code> and <code>rem</code>
+            values.
+          </p>
+
+          <h4 className='text-lg'>px</h4>
+          <p>
+            when changed, adjusts the <code>rem</code> and <code>em</code>{' '}
+            values by taking the <code>px</code> value and dividing by the{' '}
+            <code>baseFontSize</code>.
+          </p>
+          <code>rem = px / baseFontSize</code>
+
+          <h4 className='text-lg'>rem/em</h4>
+          <p>
+            when changed, adjusts the <code>px</code> value by taking the{' '}
+            <code>rem</code>/<code>em</code> value and multiplying by the{' '}
+            <code>baseFontSize</code>.
+          </p>
+          <code>px = rem * baseFontSize</code>
+        </CardContent>
+      </Card>
     </span>
   )
 }

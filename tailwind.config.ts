@@ -128,6 +128,21 @@ const config: Config = {
                 outlineOffset: 'var(--tw-ring-offset-width)',
               },
             },
+            code: {
+              // color: 'var(--tw-prose-code)',
+              backgroundColor: 'hsl(var(--secondary))',
+              paddingTop: theme('margin.1'),
+              paddingBottom: theme('margin.1'),
+              paddingRight: theme('margin.2'),
+              paddingLeft: theme('margin.2'),
+              borderRadius: theme('borderRadius.sm'),
+              '&:before': {
+                display: 'none',
+              },
+              '&:after': {
+                display: 'none',
+              },
+            },
           },
         },
       }),
