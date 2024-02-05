@@ -24,6 +24,7 @@ import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 
 import { INITIAL_STATE, reducer } from './reducer'
+import { CodeBlock } from '@/components/code-block'
 
 function InputButton({
   suffix,
@@ -232,24 +233,27 @@ export function Client() {
             Greatest Common Divisor (GCD) is the highest number that is evenly
             divisible by both numbers.
           </p>
-          <pre>
-            {`const gcd = (a: number, b: number): number => (b == 0 ? a : gcd(b, a % b))`}
-          </pre>
+          <CodeBlock
+            code={`const gcd = (a: number, b: number): number => (b == 0 ? a : gcd(b, a % b))`}
+          />
 
           <h4>closestAspectRatio()</h4>
-          <pre>
-            {`function closestAspectRatio(width: number, height: number) {
+
+          <CodeBlock
+            code={`function closestAspectRatio(width: number, height: number) {
   const _gcd = gcd(width, height)
   const ratioWidth = width / _gcd
   const ratioHeight = height / _gcd
   const decimal = ratioWidth / ratioHeight
+
   return {
     ratioWidth,
     ratioHeight,
     decimal,
   }
 }`}
-          </pre>
+            className='w-full'
+          />
           <p>
             This method calculates the closest aspect ratio given the{' '}
             <code>width</code> and <code>width</code> values. It is used when
@@ -262,10 +266,12 @@ export function Client() {
             <code>ratioHeight</code> values using the above{' '}
             <code>closestAspectRatio()</code> method.
           </p>
-          <pre>{`const { 
+          <CodeBlock
+            code={`const { 
   ratioWidth,
   ratioHeight
-} = closestAspectRatio(newWidthValue, height)`}</pre>
+} = closestAspectRatio(newWidthValue, height)`}
+          />
 
           <h4 className='text-lg'>height</h4>
           <p>
@@ -273,10 +279,12 @@ export function Client() {
             <code>ratioHeight</code> values using the above{' '}
             <code>closestAspectRatio()</code> method.
           </p>
-          <pre>{`const { 
+          <CodeBlock
+            code={`const { 
   ratioWidth,
   ratioHeight
-} = closestAspectRatio(width, newHeightValue)`}</pre>
+} = closestAspectRatio(width, newHeightValue)`}
+          />
 
           <h4 className='text-lg'>ratioWidth</h4>
           <p>

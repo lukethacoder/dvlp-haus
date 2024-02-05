@@ -102,6 +102,9 @@ devDependencies:
   postcss:
     specifier: ^8
     version: 8.4.33
+  shiki:
+    specifier: 1.0.0-beta.5
+    version: 1.0.0-beta.5
   tailwindcss:
     specifier: ^3.3.0
     version: 3.4.1
@@ -1204,6 +1207,10 @@ packages:
 
   /@rushstack/eslint-patch@1.7.2:
     resolution: {integrity: sha512-RbhOOTCNoCrbfkRyoXODZp75MlpiHMgbE5MEBZAnnnLyQNgrigEj4p0lzsMDyc1zVsJDLrivB58tgg3emX0eEA==}
+    dev: true
+
+  /@shikijs/core@1.0.0-beta.5:
+    resolution: {integrity: sha512-C/MxtvK3FFCQZSsDq6OfjDHHOmyP1Jc9wO66cnE8VLEyWXzWch7Zpoc2MWuVJTSC0Pz9QxyUlsBCnroplFqoSg==}
     dev: true
 
   /@swc/helpers@0.5.2:
@@ -3500,6 +3507,12 @@ packages:
   /shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+
+  /shiki@1.0.0-beta.5:
+    resolution: {integrity: sha512-S5FV55ZH8zLicVyqlJZj8LYqh/VuUICDDNG/L9eDM9I4d69EX+FbgSnKRIuJIwLrmJfTiPoGVnH1HsHX5whP/g==}
+    dependencies:
+      '@shikijs/core': 1.0.0-beta.5
+    dev: true
 
   /side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}

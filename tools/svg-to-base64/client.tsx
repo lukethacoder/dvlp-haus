@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 import { Textarea } from '@/components/ui/textarea'
 import { checkIfValidSvg, encodeSvg } from './utils'
+import { CodeBlock } from '@/components/code-block'
 
 function InputButton({
   suffix,
@@ -209,7 +210,8 @@ export function Client() {
           </CardHeader>
           <CardContent className='prose'>
             <p>SVG to base64 uses regex to encode the provided SVG input.</p>
-            <pre>{`const encodeSvg = (data: string) => {
+            <CodeBlock
+              code={`const encodeSvg = (data: string) => {
   const symbols = /[${'\\'}r${'\\'}n%#()<>?\[\\\]^\`{|}]/g
 
   data = data.replace(/'/g, '"')
@@ -217,7 +219,9 @@ export function Client() {
   data = data.replace(/\s{2,}/g, ' ')
 
   return data.replace(symbols, encodeURIComponent)
-}`}</pre>
+}`}
+              className='w-full'
+            />
             <p>
               The SVG input is purified at runtime using{' '}
               <a

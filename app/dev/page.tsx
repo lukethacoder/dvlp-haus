@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { CodeBlock } from '@/components/code-block'
 
 export default async function DevPage() {
   if (process.env.NODE_ENV !== 'development') {
@@ -19,6 +20,13 @@ export default async function DevPage() {
     <>
       <main className='flex min-h-screen flex-col items-center justify-between'>
         <div className='w-full pb-16'>
+          <section className='max-w-5xl mx-auto w-full px-4 mt-16'>
+            <h2 className='text-2xl mb-4'>CodeBlock</h2>
+            <div className='flex flex-wrap gap-4'>
+              <CodeBlock code={`const hello = 'world'`} className='w-full' />
+            </div>
+          </section>
+
           <section className='max-w-5xl mx-auto w-full px-4 mt-16'>
             <h2 className='text-2xl mb-4'>Colors</h2>
             <div className='flex flex-wrap gap-4'>

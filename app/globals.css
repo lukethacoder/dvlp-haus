@@ -60,6 +60,11 @@
   code, kbd, samp, pre {
     @apply font-mono;
   }
+
+  .prose .shiki,
+  .shiki {
+    @apply w-full p-4 mt-0 mb-0; 
+  }
 }
 
 * {
