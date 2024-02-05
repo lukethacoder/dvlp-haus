@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import TOOLS from '@/tools'
 import { isValidToolName } from '@/lib/tools'
-import { getTimestamp } from '@/lib/git'
+// import { getTimestamp } from '@/lib/git'
 import { cn } from '@/lib/utils'
 
 import { SEO_TITLE_EXTENSION, SEO_DEFAULTS } from '@/lib/constants'
@@ -62,7 +62,7 @@ export default async function ToolPage({ params }: PageProps) {
   const { name, description, component: Component } = component
 
   // get Last Updated value from .git
-  const timestamp = await getTimestamp(`tools/${slug}`)
+  // const timestamp = await getTimestamp(`tools/${slug}`)
 
   return (
     <div>
@@ -77,11 +77,11 @@ export default async function ToolPage({ params }: PageProps) {
       <div className='w-full p-4 border-t flex gap-4 items-center justify-between'>
         <Claps pageKey={slug} />
         <span className='flex items-center gap-4'>
-          {timestamp && (
+          {/* {timestamp && (
             <span className='text-sm mt-0 mb-0 text-muted-foreground'>
               Last updated on <time>{dateFormat.format(timestamp)}</time>
             </span>
-          )}
+          )} */}
           <a
             href={`https://github.com/lukethacoder/dvlp-haus/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=${name}%20Bug`}
             className={cn(buttonVariants({ variant: 'outline' }))}
