@@ -17,6 +17,11 @@ const firaCode = Fira_Code({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'dvlp.haus',
   description: 'Toolbox for Developers',
+  metadataBase: new URL(
+    process.env.NODE_ENV === 'production'
+      ? 'https://dvlp.haus'
+      : process.env.VERCEL_URL || 'http://localhost:3000'
+  ),
 }
 
 export const viewport: Viewport = {

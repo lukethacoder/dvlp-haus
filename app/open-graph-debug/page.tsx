@@ -1,8 +1,13 @@
+import { notFound } from 'next/navigation'
 import { Footer } from '@/components/footer'
 import { getEntries } from '@/lib/ts'
 import TOOLS from '@/tools'
 
 export default function OpenGraphDebugPage() {
+  if (process.env.NODE_ENV !== 'development') {
+    notFound()
+  }
+
   return (
     <>
       <main className='flex min-h-screen flex-col items-center justify-between'>

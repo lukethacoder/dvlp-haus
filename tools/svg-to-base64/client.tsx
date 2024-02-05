@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, MouseEventHandler, useEffect, useState } from 'react'
+import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { IconCopy } from '@tabler/icons-react'
 import DOMPurify from 'dompurify'
 

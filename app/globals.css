@@ -81,6 +81,10 @@
   border-radius: 2px;
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 .hover-card {
   position: relative;
   overflow: hidden;
