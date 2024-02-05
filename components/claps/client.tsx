@@ -48,7 +48,6 @@ export function Client({
   }
 
   async function handleUpdateKv() {
-    console.log('handleUpdateKv')
     if (recaptchaEl.current) {
       try {
         // reCAPTCHA onCaptchaChange method will fire here

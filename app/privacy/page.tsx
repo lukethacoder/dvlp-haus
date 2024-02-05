@@ -43,9 +43,30 @@ export default function PrivacyPage() {
 
           <h2>Analytics and Tracking</h2>
           <p>
-            This website utilizes Google Analytics for access analysis purposes.
-            Users have the choice to opt out of this feature by disabling
-            cookies. We recommend reviewing your browser settings accordingly.
+            This website utilizes GoatCounter for general analytical tracking as
+            an alternative to Google Analytics. For more information on how
+            GoatCounter collects and uses your data, visit{` `}
+            <a href='https://www.goatcounter.com/help/privacy'>
+              Goat Counter Privacy
+            </a>
+            .
+          </p>
+          <p>
+            This website utalizes Microsoft Clarity to capture how you use and
+            interact with our website through behavioral metrics, heatmaps, and
+            session replay to improve and catch bugs within the tools. Website
+            usage data is captured using first and third-party cookies and other
+            tracking technologies to determine the popularity of the tools. For
+            more information about how Microsoft collects and uses your data,
+            visit the{' '}
+            <a
+              href='https://privacy.microsoft.com/en-US/privacystatement'
+              target='_blank'
+              rel='nofollow noreferrer'
+            >
+              Microsoft Privacy Statement
+            </a>
+            .
           </p>
 
           <h2>Open Source</h2>

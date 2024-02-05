@@ -7,12 +7,17 @@ import { Header } from '@/components/header'
 import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/components/theme-provider'
 import { buttonVariants } from '@/components/ui/button'
+import dynamic from 'next/dynamic'
 
 const rubik = Cabin({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
 })
 const firaCode = Fira_Code({ subsets: ['latin'] })
+
+const AnalyticsBlock = dynamic(() => import(`@/components/analytics`), {
+  ssr: false,
+})
 
 export const metadata: Metadata = {
   title: 'dvlp.haus',
@@ -38,6 +43,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <AnalyticsBlock />
+      </head>
       <body
         className={`${rubik.className} bg-background min-h-dvh flex flex-col`}
       >
