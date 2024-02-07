@@ -9,12 +9,8 @@ Productive. Accessible. Open Source.</strong>
 </div>
 <br>
 <p align="center">
-  <a href="https://travis-ci.com/lukethacoder/dvlp-haus">
-    <img src="https://travis-ci.org/lukethacoder/dvlp-haus.svg?branch=master" alt="Travis Status for dvlp.haus">
-  </a>
   <a href="https://app.netlify.com/sites/dvlp-haus/deploys">
-    <!-- <img src="https://api.netlify.com/api/v1/badges/4b38ccb4-466e-491e-8057-7564c1c3ee25/deploy-status" alt="Netlify Status for DVLP HAUS maintainability"> -->
-    <img src="https://therealsujitk-vercel-badge.vercel.app/?app=dvlp-haus" />
+    <img src="https://therealsujitk-vercel-badge.vercel.app/?app=dvlp-haus" alt="vercel deployment status for dvlp.haus" />
   </a>
 </p>
 
