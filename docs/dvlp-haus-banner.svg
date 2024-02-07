@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1500" height="460" viewBox="0 0 1500 460">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3" data-name="Rectangle 3" width="1211" height="460" rx="58" fill="#0c0a09" stroke="#e11d48" stroke-width="21"/>
+    </clipPath>
+    <clipPath id="clip-Web_1920_1">
+      <rect width="1500" height="460"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_1" data-name="Web 1920 – 1" clip-path="url(#clip-Web_1920_1)">
+    <g id="Rectangle_1" data-name="Rectangle 1" fill="#0c0a09" stroke="#e11d48" stroke-width="21">
+      <rect width="1489" height="460" rx="48" stroke="none"/>
+      <rect x="10.5" y="10.5" width="1468" height="439" rx="37.5" fill="none"/>
+    </g>
+    <g id="Group_2" data-name="Group 2" transform="translate(-170 -140)">
+      <text id="dvlp.haus_" data-name="dvlp.haus
+" transform="translate(239 341)" fill="#fff" font-size="170" font-family="Cabin-Bold, Cabin" font-weight="700"><tspan x="0" y="164">dvlp.haus</tspan></text>
+    </g>
+    <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(289)" clip-path="url(#clip-path)">
+      <path id="Path_1" data-name="Path 1" d="M87.474,124.939,1251.491,8.65l-82.178,652.376L5.3,777.316Z" transform="translate(1038.801 -261.75) rotate(22)" fill="#e11d48"/>
+    </g>
+  </g>
+</svg>

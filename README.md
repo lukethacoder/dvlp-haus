@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <br>
+  <br>
+  <img alt="dvlp.haus" src="./docs/dvlp-haus-banner.svg" width="500">
+  <br>
+  <br>
+  <strong>Essential developer tools to make your life easier.<br/>
+Productive. Accessible. Open Source.</strong>
+</div>
+<br>
+<p align="center">
+  <a href="https://travis-ci.com/lukethacoder/dvlp-haus">
+    <img src="https://travis-ci.org/lukethacoder/dvlp-haus.svg?branch=master" alt="Travis Status for dvlp.haus">
+  </a>
+  <a href="https://app.netlify.com/sites/dvlp-haus/deploys">
+    <!-- <img src="https://api.netlify.com/api/v1/badges/4b38ccb4-466e-491e-8057-7564c1c3ee25/deploy-status" alt="Netlify Status for DVLP HAUS maintainability"> -->
+    <img src="https://therealsujitk-vercel-badge.vercel.app/?app=dvlp-haus" />
+  </a>
+</p>
 
-## Getting Started
+## 🍱 Tools
 
-First, run the development server:
+### Converters
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [Font Size Converter](https://dvlp.haus/tools/font-size-converter)
+- [SVG to base64](https://dvlp.haus/tools/svg-to-base64)
+
+### Math
+
+- [Aspect Ratio Calculator](https://dvlp.haus/tools/font-size-converter)
+
+## 🔥 Local Development
+
+**Install the node_modules.**
+
+```shell
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Edit the Environment variables.**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Vercel KV Redis
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```env
+KV_URL="redis://default:1234567890@abcdefgh-ijklm-12345.upstash.io:12345"
+KV_REST_API_URL="https://abcdefgh-ijklm-12345.upstash.io"
+KV_REST_API_TOKEN="abcdefghijklmnopqrstuvwxyz="
+KV_REST_API_READ_ONLY_TOKEN="abcdefghijklmnopqrstuvwxyz="
+```
 
-## Learn More
+**Start the site in `dev` mode.**
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Open the code in your IDE of choice and start editing!**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Your site is now running at `http://localhost:3000`.
