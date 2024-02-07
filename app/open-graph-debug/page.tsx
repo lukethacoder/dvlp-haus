@@ -14,7 +14,7 @@ export default function OpenGraphDebugPage() {
         <div className='w-full pb-16'>
           <section className='max-w-5xl mx-auto w-full px-4 mt-16'>
             <h2 className='text-2xl mb-4'>Open Graph Image Test Page</h2>
-            <div className='w-full grid grid-cols-3 gap-4'>
+            <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
               {getEntries(TOOLS).map(([key, item]) => {
                 return (
                   <span

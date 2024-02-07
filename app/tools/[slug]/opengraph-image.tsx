@@ -72,7 +72,7 @@ export default async function Image({
           background: '#000000',
           width: '100%',
           height: '100%',
-          padding: '0',
+          padding: '56px 24px',
           display: 'flex',
         }}
       >
@@ -82,19 +82,102 @@ export default async function Image({
             background: '#0c0a09',
             width: '100%',
             height: '100%',
+            position: 'relative',
             display: 'flex',
             flexDirection: 'column',
-            borderRadius: '0px',
+            borderRadius: '48px',
             padding: '48px',
             border: '8px solid #e11d48',
+            overflow: 'hidden',
           }}
         >
           <div
             style={{
-              fontSize: 128,
-              lineHeight: '1.28',
+              display: 'flex',
+              position: 'absolute',
+              // backgroundColor: 'green',
+              height: '520px',
+              width: '520px',
+              top: '-4px',
+              right: '-72px',
+              overflow: 'visible',
+              // borderStyle: 'solid',
+              // borderWidth: '0px 0px 160px 60px',
+              // borderColor: 'teal pink burlywood purple',
+            }}
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              xmlnsXlink='http://www.w3.org/1999/xlink'
+              // width='340'
+              height='101%'
+              viewBox='0 0 340 342'
+            >
+              <defs>
+                <clipPath id='clip-path'>
+                  <rect
+                    id='Rectangle_3'
+                    width='340'
+                    height='342'
+                    transform='translate(559.48 -0.132)'
+                    fill='#0c0a09'
+                    stroke='#e11d48'
+                    strokeWidth='21'
+                  />
+                </clipPath>
+              </defs>
+              <g
+                id='Mask_Group_1'
+                transform='translate(-559.48 0.132)'
+                clip-path='url(#clip-path)'
+              >
+                <path
+                  id='Path_1'
+                  data-name='Path 1'
+                  d='M61.05,86.392,925.8,0l-61.05,484.654L0,571.046Z'
+                  transform='translate(772.972 -187.024) rotate(22)'
+                  fill='#e11d48'
+                />
+              </g>
+            </svg>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              margin: '0 0 8px',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                height: '42px',
+                width: '42px',
+              }}
+            >
+              {encodedIcon ? (
+                <img src={`data:image/svg+xml,${encodedIcon}`} />
+              ) : null}
+            </div>
+            <div
+              style={{
+                fontSize: '28px',
+                color: '#A1A1A1',
+                textTransform: 'uppercase',
+                fontWeight: 700,
+              }}
+            >
+              {category.name}
+            </div>
+          </div>
+          <div
+            style={{
+              fontSize: 96,
+              lineHeight: '1.24',
               color: '#fff',
-              width: '100%',
+              width: '70%',
               height: '100%',
               display: 'flex',
             }}
@@ -116,39 +199,17 @@ export default async function Image({
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
               }}
             >
               <div
                 style={{
                   display: 'flex',
-                  height: '42px',
-                  width: '42px',
+                  fontSize: 48,
+                  color: '#fff',
                 }}
               >
-                {encodedIcon ? (
-                  <img src={`data:image/svg+xml,${encodedIcon}`} />
-                ) : null}
+                dvlp.haus
               </div>
-              <div
-                style={{
-                  fontSize: '28px',
-                  color: '#A1A1A1',
-                  textTransform: 'uppercase',
-                  fontWeight: 700,
-                }}
-              >
-                {category.name}
-              </div>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                fontSize: 48,
-                color: '#fff',
-              }}
-            >
-              dvlp.haus
             </div>
           </div>
         </div>
