@@ -87,7 +87,7 @@ export default async function Image({
             flexDirection: 'column',
             borderRadius: '48px',
             padding: '48px',
-            border: '8px solid #e11d48',
+            border: '16px solid #e11d48',
             overflow: 'hidden',
           }}
         >
@@ -95,21 +95,16 @@ export default async function Image({
             style={{
               display: 'flex',
               position: 'absolute',
-              // backgroundColor: 'green',
               height: '520px',
               width: '520px',
               top: '-4px',
               right: '-72px',
               overflow: 'visible',
-              // borderStyle: 'solid',
-              // borderWidth: '0px 0px 160px 60px',
-              // borderColor: 'teal pink burlywood purple',
             }}
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               xmlnsXlink='http://www.w3.org/1999/xlink'
-              // width='340'
               height='101%'
               viewBox='0 0 340 342'
             >
@@ -147,7 +142,7 @@ export default async function Image({
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
-              margin: '0 0 8px',
+              margin: '0 0 12px',
             }}
           >
             <div
