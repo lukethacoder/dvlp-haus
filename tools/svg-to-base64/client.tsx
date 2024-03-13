@@ -29,7 +29,7 @@ function InputButton({
   onClick: MouseEventHandler<HTMLButtonElement>
 }) {
   return (
-    <span className='absolute top-2 right-2 flex'>
+    <>
       {suffix && (
         <span className='text-sm text-muted-foreground mr-1'>{suffix}</span>
       )}
@@ -52,7 +52,7 @@ function InputButton({
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-    </span>
+    </>
   )
 }
 
@@ -100,138 +100,104 @@ export function Client() {
   }
 
   return (
-    <span className='flex flex-col gap-4 p-4'>
-      <div className='w-full max-w-7xl grid md:grid-cols-2 gap-4'>
-        <Card className='w-full max-w-3xl'>
-          <CardHeader>
-            <form className='w-full flex flex-col gap-6'>
-              <div className='w-full flex flex-col'>
-                <Label className='mb-2' htmlFor='svgInput'>
-                  SVG Code
-                </Label>
+    <div className='w-full max-w-7xl grid md:grid-cols-2 gap-4'>
+      <Card className='w-full max-w-3xl'>
+        <CardHeader>
+          <form className='w-full flex flex-col gap-6'>
+            <div className='w-full flex flex-col'>
+              <Label className='mb-2' htmlFor='svgInput'>
+                SVG Code
+              </Label>
+              <Textarea
+                id='svgInput'
+                placeholder='Paste <svg></svg> code here'
+                value={svgInput}
+                rows={8}
+                onChange={handleSvgInputChange}
+              />
+
+              {svgInputErrorMessage && (
+                <p className='text-sm font-medium text-destructive mt-1'>
+                  {svgInputErrorMessage}
+                </p>
+              )}
+            </div>
+
+            <div className='w-full flex flex-col'>
+              <Label className='mb-2' htmlFor='svgInput'>
+                Base64 Output
+              </Label>
+              <span className='flex relative'>
                 <Textarea
                   id='svgInput'
-                  placeholder='Paste <svg></svg> code here'
-                  value={svgInput}
+                  value={base64String}
                   rows={8}
-                  onChange={handleSvgInputChange}
+                  readOnly
                 />
-
-                {svgInputErrorMessage && (
-                  <p className='text-sm font-medium text-destructive mt-1'>
-                    {svgInputErrorMessage}
-                  </p>
-                )}
-              </div>
-
-              <div className='w-full flex flex-col'>
-                <Label className='mb-2' htmlFor='svgInput'>
-                  Base64 Output
-                </Label>
-                <span className='flex relative'>
-                  <Textarea
-                    id='svgInput'
-                    value={base64String}
-                    rows={8}
-                    readOnly
+                <span className={base64String ? 'flex' : 'hidden'}>
+                  <InputButton
+                    buttonAriaLabel='Copy base64 output'
+                    onClick={(event) =>
+                      handleCopyTextEvent(
+                        toast,
+                        event,
+                        base64String || '',
+                        `base64 string`
+                      )
+                    }
                   />
-                  <span className={base64String ? 'flex' : 'hidden'}>
-                    <InputButton
-                      buttonAriaLabel='Copy base64 output'
-                      onClick={(event) =>
-                        handleCopyTextEvent(
-                          toast,
-                          event,
-                          base64String || '',
-                          `base64 string`
-                        )
-                      }
-                    />
-                  </span>
-                </span>
-              </div>
-
-              <div className='w-full flex flex-col'>
-                <Label className='mb-2' htmlFor='cssBackgroundImage'>
-                  CSS Background Image
-                </Label>
-                <span className='flex relative'>
-                  <Textarea
-                    id='cssBackgroundImage'
-                    value={cssBackgroundImageString}
-                    rows={8}
-                    readOnly
-                  />
-                  <span
-                    className={cssBackgroundImageString ? 'flex' : 'hidden'}
-                  >
-                    <InputButton
-                      buttonAriaLabel='Copy CSS background-image'
-                      onClick={(event) =>
-                        handleCopyTextEvent(
-                          toast,
-                          event,
-                          cssBackgroundImageString || '',
-                          `background-image string`
-                        )
-                      }
-                    />
-                  </span>
-                </span>
-              </div>
-            </form>
-          </CardHeader>
-        </Card>
-        <Card className='w-full max-w-4xl'>
-          <CardHeader>
-            <div className='w-full'>
-              <span className='w-full flex flex-col'>
-                <h3 className='text-sm font-medium leading-none mb-2'>
-                  SVG Preview
-                </h3>
-                <span className='svg-preview flex items-center justify-center relative rounded-md border border-input bg-background p-8'>
-                  <span
-                    className='text-foreground w-full h-full'
-                    dangerouslySetInnerHTML={{
-                      __html: svgInputValidated ? svgInputValidated : '',
-                    }}
-                  ></span>
                 </span>
               </span>
             </div>
-          </CardHeader>
-        </Card>
-      </div>
-      <div className='w-full max-w-7xl flex flex-col gap-4'>
-        <Card className='w-full'>
-          <CardHeader>
-            <CardTitle>About</CardTitle>
-          </CardHeader>
-          <CardContent className='prose'>
-            <p>SVG to base64 uses regex to encode the provided SVG input.</p>
-            <pre>{`const encodeSvg = (data: string) => {
-  const symbols = /[${'\\'}r${'\\'}n%#()<>?\[\\\]^\`{|}]/g
 
-  data = data.replace(/'/g, '"')
-  data = data.replace(/>\s{1,}</g, '><')
-  data = data.replace(/\s{2,}/g, ' ')
-
-  return data.replace(symbols, encodeURIComponent)
-}`}</pre>
-            <p>
-              The SVG input is purified at runtime using{' '}
-              <a
-                href='https://github.com/cure53/DOMPurify'
-                target='_blank'
-                rel='nofollow noreferrer'
-              >
-                DOMPurify
-              </a>{' '}
-              before being injected into the DOM as a live preview.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    </span>
+            <div className='w-full flex flex-col'>
+              <Label className='mb-2' htmlFor='cssBackgroundImage'>
+                CSS Background Image
+              </Label>
+              <span className='flex relative'>
+                <Textarea
+                  id='cssBackgroundImage'
+                  value={cssBackgroundImageString}
+                  rows={8}
+                  readOnly
+                />
+                <span className={cssBackgroundImageString ? 'flex' : 'hidden'}>
+                  <InputButton
+                    buttonAriaLabel='Copy CSS background-image'
+                    onClick={(event) =>
+                      handleCopyTextEvent(
+                        toast,
+                        event,
+                        cssBackgroundImageString || '',
+                        `background-image string`
+                      )
+                    }
+                  />
+                </span>
+              </span>
+            </div>
+          </form>
+        </CardHeader>
+      </Card>
+      <Card className='w-full max-w-4xl'>
+        <CardHeader>
+          <div className='w-full'>
+            <span className='w-full flex flex-col'>
+              <h3 className='text-sm font-medium leading-none mb-2'>
+                SVG Preview
+              </h3>
+              <span className='svg-preview flex items-center justify-center relative rounded-md border border-input bg-background p-8'>
+                <span
+                  className='text-foreground w-full h-full'
+                  dangerouslySetInnerHTML={{
+                    __html: svgInputValidated ? svgInputValidated : '',
+                  }}
+                ></span>
+              </span>
+            </span>
+          </div>
+        </CardHeader>
+      </Card>
+    </div>
   )
 }

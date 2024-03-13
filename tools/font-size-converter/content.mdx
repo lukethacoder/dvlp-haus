@@ -1,0 +1,18 @@
+
+Font Converter runs simple equations to calculate `px`,
+`em` and `rem`
+values.
+
+#### px
+when changed, adjusts the `rem` and `em`
+values by taking the `px` value and dividing by the
+`baseFontSize`.
+
+`rem = px / baseFontSize`
+
+#### rem/em
+when changed, adjusts the `px` value by taking the
+`rem`/`em` value and multiplying by the
+`baseFontSize`.
+
+`px = rem * baseFontSize`

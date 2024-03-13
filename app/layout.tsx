@@ -21,7 +21,8 @@ const AnalyticsBlock = dynamic(() => import(`@/components/analytics`), {
 
 export const metadata: Metadata = {
   title: 'dvlp.haus',
-  description: 'Toolbox for Developers',
+  description:
+    'Essential developer tools to make your life easier. Productive. Accessible. Open Source.',
   metadataBase: new URL(
     process.env.NODE_ENV === 'production'
       ? 'https://dvlp.haus'

@@ -1,0 +1,60 @@
+Aspect Ratio Calculate runs various calculations to dynamically
+calculate `width` and `height` or `ratioWidth` and `ratioHeight`.
+
+#### gcd()
+Greatest Common Divisor (GCD) is the highest number that is evenly
+divisible by both numbers.
+```ts
+const gcd = (a: number, b: number): number => (b == 0 ? a : gcd(b, a % b))
+```
+
+#### closestAspectRatio()
+```ts
+function closestAspectRatio(width: number, height: number) {
+  const _gcd = gcd(width, height)
+  const ratioWidth = width / _gcd
+  const ratioHeight = height / _gcd
+  const decimal = ratioWidth / ratioHeight
+  return {
+    ratioWidth,
+    ratioHeight,
+    decimal,
+  }
+}
+```
+This method calculates the closest aspect ratio given the
+`height` and `width` values. It is used when
+either `height` or `width` are adjusted.
+
+#### width
+when changed, adjusts the `ratioHeight` and
+`ratioHeight` values using the above
+`closestAspectRatio()` method.
+
+```ts
+const { 
+  ratioWidth,
+  ratioHeight
+} = closestAspectRatio(newWidthValue, height)
+```
+
+#### height
+when changed, adjusts the `ratioHeight` and
+`ratioHeight` values using the above
+`closestAspectRatio()` method.
+```ts
+const { 
+  ratioWidth,
+  ratioHeight
+} = closestAspectRatio(width, newHeightValue)
+```
+
+#### ratioWidth
+when changed, adjusts the `width` value.
+  
+`const width = (height * newRatioWidthValue) / ratioHeight`
+
+#### ratioHeight
+when changed, adjusts the `height` value.
+
+`const height = (width * newRatioHeightValue) / ratioWidth`

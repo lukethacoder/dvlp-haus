@@ -1,3 +1,4 @@
+import { promises as fs } from 'fs'
 import { Metadata } from 'next'
 
 import TOOLS from '@/tools'
@@ -8,6 +9,8 @@ import { cn } from '@/lib/utils'
 import { SEO_TITLE_EXTENSION, SEO_DEFAULTS } from '@/lib/constants'
 import { Claps } from '@/components/claps'
 import { buttonVariants } from '@/components/ui/button'
+import { CustomMDX } from '@/components/customMdx'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export async function generateStaticParams() {
   return Object.values(TOOLS).map((tool) => ({
@@ -46,6 +49,19 @@ const dateFormat = new Intl.DateTimeFormat('en-AU', {
   year: 'numeric',
 })
 
+const getMarkdown = async (slug: string) => {
+  try {
+    const markdown = await fs.readFile(
+      `${process.cwd()}/tools/${slug}/content.mdx`,
+      'utf8'
+    )
+    return markdown
+  } catch (error) {
+    console.error('Error loading content.mdx ', error)
+    return undefined
+  }
+}
+
 export default async function ToolPage({ params }: PageProps) {
   const { slug } = params
 
@@ -61,8 +77,7 @@ export default async function ToolPage({ params }: PageProps) {
 
   const { name, description, component: Component } = component
 
-  // get Last Updated value from .git
-  // const timestamp = await getTimestamp(`tools/${slug}`)
+  const md = slug ? await getMarkdown(slug) : undefined
 
   return (
     <div>
@@ -72,7 +87,20 @@ export default async function ToolPage({ params }: PageProps) {
           {description && <p>{description}</p>}
         </span>
       </header>
-      <Component />
+
+      <span className='flex flex-col gap-4 p-4'>
+        <Component />
+        {md && (
+          <Card className='w-full max-w-4xl'>
+            <CardHeader>
+              <CardTitle>About</CardTitle>
+            </CardHeader>
+            <CardContent className='prose'>
+              <CustomMDX source={md} />
+            </CardContent>
+          </Card>
+        )}
+      </span>
 
       <div className='w-full p-4 border-t flex gap-4 items-center justify-between'>
         <Claps pageKey={slug} />

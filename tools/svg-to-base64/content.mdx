@@ -1,0 +1,15 @@
+SVG to base64 uses regex to encode the provided SVG input.
+
+```typescript filename="abn-validation.js" showLineNumbers copy
+const encodeSvg = (data: string) => {
+  const symbols1 = /[\r\n%#()<>?\[\\\]^`{|}]/g
+
+  data = data.replace(/'/g, '"')
+  data = data.replace(/>\s{1,}</g, '><')
+  data = data.replace(/\s{2,}/g, ' ')
+
+  return data.replace(symbols, encodeURIComponent)
+}
+```
+
+The SVG input is purified at runtime using <a href='https://github.com/cure53/DOMPurify' target='_blank' rel='nofollow noreferrer'>DOMPurify</a> before being injected into the DOM as a live preview.

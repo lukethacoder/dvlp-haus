@@ -1,6 +1,7 @@
 import { ITool } from '@/lib/tools'
 import { Suspense } from 'react'
 import { Client } from './client'
+import path from 'path'
 
 export function Component() {
   return (
