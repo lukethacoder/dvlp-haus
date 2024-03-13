@@ -1,3 +1,5 @@
+'use server'
+
 import { promises as fs } from 'fs'
 import { Metadata } from 'next'
 
@@ -11,6 +13,7 @@ import { Claps } from '@/components/claps'
 import { buttonVariants } from '@/components/ui/button'
 import { CustomMDX } from '@/components/customMdx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Suspense } from 'react'
 
 export async function generateStaticParams() {
   return Object.values(TOOLS).map((tool) => ({
@@ -96,7 +99,9 @@ export default async function ToolPage({ params }: PageProps) {
               <CardTitle>About</CardTitle>
             </CardHeader>
             <CardContent className='prose'>
-              <CustomMDX source={md} />
+              <Suspense fallback={<span className='w-full h-96'></span>}>
+                <CustomMDX source={md} />
+              </Suspense>
             </CardContent>
           </Card>
         )}

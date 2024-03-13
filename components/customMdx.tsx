@@ -1,3 +1,5 @@
+'use server'
+
 import React, { ReactNode, Suspense } from 'react'
 
 import Link from 'next/link'
@@ -125,13 +127,11 @@ const COMPONENTS = {
   // LiveCode,
 }
 
-export function CustomMDX(props: { source: string; components?: any }) {
+export async function CustomMDX(props: { source: string; components?: any }) {
   return (
-    <Suspense fallback={<p>loading content</p>}>
-      <MDXRemote
-        source={props.source}
-        components={{ ...COMPONENTS, ...(props.components || {}) }}
-      />
-    </Suspense>
+    <MDXRemote
+      source={props.source}
+      components={{ ...COMPONENTS, ...(props.components || {}) }}
+    />
   )
 }
