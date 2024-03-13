@@ -1,10 +1,16 @@
-import { ComponentType, ReactNode } from 'react'
+import {
+  ComponentType,
+  ForwardRefExoticComponent,
+  FunctionComponent,
+  ReactNode,
+  RefAttributes,
+} from 'react'
 import {
   IconMath,
   IconQuestionMark,
   IconSwitchHorizontal,
   IconTransform,
-  TablerIconsProps,
+  IconProps,
 } from '@tabler/icons-react'
 import TOOLS, { TOOL_NAMES } from '@/tools'
 
@@ -18,7 +24,10 @@ export const CATEGORY_KEYS = [
 
 export interface ICategory {
   readonly name: string
-  readonly icon: (props: TablerIconsProps) => ReactNode
+  // readonly icon: (props: IconProps) => ReactNode
+  readonly icon: ForwardRefExoticComponent<
+    Omit<IconProps, 'ref'> & RefAttributes<FunctionComponent<IconProps>>
+  >
   readonly iconRef: URL
 }
 
@@ -27,7 +36,7 @@ export const CATEGORIES: Record<(typeof CATEGORY_KEYS)[number], ICategory> = {
     name: 'Converters',
     icon: IconSwitchHorizontal,
     iconRef: new URL(
-      '../../node_modules/@tabler/icons/icons/switch-horizontal.svg',
+      '../../node_modules/@tabler/icons/icons/outline/switch-horizontal.svg',
       import.meta.url
     ),
   },
@@ -35,7 +44,7 @@ export const CATEGORIES: Record<(typeof CATEGORY_KEYS)[number], ICategory> = {
     name: 'Encoders / Decoders',
     icon: IconTransform,
     iconRef: new URL(
-      '../../node_modules/@tabler/icons/icons/transform.svg',
+      '../../node_modules/@tabler/icons/icons/outline/transform.svg',
       import.meta.url
     ),
   },
@@ -43,7 +52,7 @@ export const CATEGORIES: Record<(typeof CATEGORY_KEYS)[number], ICategory> = {
     name: 'Math',
     icon: IconMath,
     iconRef: new URL(
-      '../../node_modules/@tabler/icons/icons/math.svg',
+      '../../node_modules/@tabler/icons/icons/outline/math.svg',
       import.meta.url
     ),
   },
@@ -51,7 +60,7 @@ export const CATEGORIES: Record<(typeof CATEGORY_KEYS)[number], ICategory> = {
     name: 'Other',
     icon: IconQuestionMark,
     iconRef: new URL(
-      '../../node_modules/@tabler/icons/icons/question-mark.svg',
+      '../../node_modules/@tabler/icons/icons/outline/question-mark.svg',
       import.meta.url
     ),
   },
