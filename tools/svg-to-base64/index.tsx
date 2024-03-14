@@ -1,6 +1,8 @@
+import { Suspense } from 'react'
+
 import { ITool } from '@/lib/tools'
 import { Client } from './client'
-import { Suspense } from 'react'
+import MdxContent from './content.mdx'
 
 function Component() {
   return (
@@ -19,4 +21,5 @@ export default class Tool implements ITool {
   readonly category = 'converters'
   readonly openGraphFontSize = 172
   component = Component
+  content = MdxContent
 }

@@ -1,19 +1,17 @@
 'use server'
 
-import { promises as fs } from 'fs'
+import { Suspense } from 'react'
 import { Metadata } from 'next'
 
 import TOOLS from '@/tools'
 import { isValidToolName } from '@/lib/tools'
 // import { getTimestamp } from '@/lib/git'
 import { cn } from '@/lib/utils'
-
 import { SEO_TITLE_EXTENSION, SEO_DEFAULTS } from '@/lib/constants'
+
 import { Claps } from '@/components/claps'
 import { buttonVariants } from '@/components/ui/button'
-import { CustomMDX } from '@/components/customMdx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Suspense } from 'react'
 
 export async function generateStaticParams() {
   return Object.values(TOOLS).map((tool) => ({
@@ -52,19 +50,6 @@ const dateFormat = new Intl.DateTimeFormat('en-AU', {
   year: 'numeric',
 })
 
-const getMarkdown = async (slug: string) => {
-  try {
-    const markdown = await fs.readFile(
-      `${process.cwd()}/tools/${slug}/content.mdx`,
-      'utf8'
-    )
-    return markdown
-  } catch (error) {
-    console.error('Error loading content.mdx ', error)
-    return undefined
-  }
-}
-
 export default async function ToolPage({ params }: PageProps) {
   const { slug } = params
 
@@ -78,9 +63,14 @@ export default async function ToolPage({ params }: PageProps) {
 
   const component = TOOLS[slug]
 
-  const { name, description, component: Component } = component
+  const {
+    name,
+    description,
+    component: Component,
+    content: MdxContent,
+  } = component
 
-  const md = slug ? await getMarkdown(slug) : undefined
+  // const md = slug ? await getMarkdown(slug) : undefined
 
   return (
     <div>
@@ -93,14 +83,14 @@ export default async function ToolPage({ params }: PageProps) {
 
       <span className='flex flex-col gap-4 p-4'>
         <Component />
-        {md && (
+        {MdxContent && (
           <Card className='w-full max-w-4xl'>
             <CardHeader>
               <CardTitle>About</CardTitle>
             </CardHeader>
             <CardContent className='prose'>
-              <Suspense fallback={<span className='w-full h-96'></span>}>
-                <CustomMDX source={md} />
+              <Suspense>
+                <MdxContent />
               </Suspense>
             </CardContent>
           </Card>

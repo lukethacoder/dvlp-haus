@@ -53,11 +53,11 @@ export default function Home() {
             Productive. Accessible. Open Source.
           </span>
           <div className='flex w-full items-center justify-center space-x-4 py-4'>
-            <a className={cn(buttonVariants())} href='/docs'>
+            <Link className={cn(buttonVariants())} href='/tools'>
               Check out the tools
-            </a>
+            </Link>
             <a
-              href='https://github.com/shadcn-ui/ui'
+              href='https://github.com/lukethacoder/dvlp-haus'
               className={cn(buttonVariants({ variant: 'outline' }))}
               target='_blank'
               rel='nofollow noreferrer'

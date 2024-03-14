@@ -24,7 +24,6 @@ export const CATEGORY_KEYS = [
 
 export interface ICategory {
   readonly name: string
-  // readonly icon: (props: IconProps) => ReactNode
   readonly icon: ForwardRefExoticComponent<
     Omit<IconProps, 'ref'> & RefAttributes<FunctionComponent<IconProps>>
   >
@@ -110,4 +109,5 @@ export interface ITool {
   readonly category: (typeof CATEGORY_KEYS)[number]
   readonly openGraphFontSize?: number
   component: ComponentType<any>
+  content?: ComponentType<any>
 }
