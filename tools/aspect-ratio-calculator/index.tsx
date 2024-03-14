@@ -1,18 +1,5 @@
-import { Suspense } from 'react'
-
+import dynamic from 'next/dynamic'
 import { ITool } from '@/lib/tools'
-import { Client } from './client'
-import MdxContent from './content.mdx'
-
-export function Component() {
-  return (
-    <span>
-      <Suspense fallback={<p>loading</p>}>
-        <Client />
-      </Suspense>
-    </span>
-  )
-}
 
 export default class Tool implements ITool {
   readonly slug = 'aspect-ratio-calculator'
@@ -20,6 +7,6 @@ export default class Tool implements ITool {
   description =
     'Calculate aspect ratio. Supports calculating width, height or the aspect ratio value.'
   readonly category = 'math'
-  component = Component
-  content = MdxContent
+  component = dynamic(() => import('./server'))
+  content = dynamic(() => import('./content.mdx'))
 }

@@ -1,18 +1,5 @@
-import { Suspense } from 'react'
-
+import dynamic from 'next/dynamic'
 import { ITool } from '@/lib/tools'
-import { Client } from './client'
-import MdxContent from './content.mdx'
-
-function Component() {
-  return (
-    <span>
-      <Suspense>
-        <Client />
-      </Suspense>
-    </span>
-  )
-}
 
 export default class Tool implements ITool {
   readonly slug = 'svg-to-base64'
@@ -20,6 +7,6 @@ export default class Tool implements ITool {
   description = 'Convert SVG markup to Base64. Handy to convert SVGs to CSS.'
   readonly category = 'converters'
   readonly openGraphFontSize = 172
-  component = Component
-  content = MdxContent
+  component = dynamic(() => import('./server'))
+  content = dynamic(() => import('./content.mdx'))
 }
