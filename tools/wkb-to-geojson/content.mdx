@@ -1,0 +1,15 @@
+"Well-known binary" (WKB) is a binary encoding that allows geometric data to be efficiently stored and transmitted.
+
+WKB is a standard method for representing geometric objects such as `points`, `lines`, and `polygons` in binary form.
+It's commonly used in the field of Geographic Information Systems (GIS) and spatial databases.
+
+This tool uses the <a href='https://github.com/cschwarz/wkx' target='_blank' rel='nofollow noreferrer'>wkx</a> package to handle conversions from WKB to GeoJSON.
+
+```ts
+import wkx from 'wkx'
+
+// wkbValue is your input value
+const twkbBuffer = Buffer.from(wkbValue, 'hex')
+const geometry = wkx.Geometry.parse(twkbBuffer)
+const geoJson = geometry.toGeoJSON()
+```

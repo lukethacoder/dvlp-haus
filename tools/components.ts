@@ -17,6 +17,10 @@ const TOOL_COMPONENTS: Record<(typeof TOOL_NAMES)[number], ToolData> = {
     component: dynamic(() => import('@/tools/svg-to-base64/server')),
     content: dynamic(() => import('@/tools/svg-to-base64/content.mdx')),
   },
+  'wkb-to-geojson': {
+    component: dynamic(() => import('@/tools/wkb-to-geojson/server')),
+    content: dynamic(() => import('@/tools/wkb-to-geojson/content.mdx')),
+  },
 }
 
 export default TOOL_COMPONENTS
