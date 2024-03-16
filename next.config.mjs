@@ -1,5 +1,6 @@
 import nextMdx from '@next/mdx'
 import remarkGfm from 'remark-gfm'
+import nextAnalyzer from '@next/bundle-analyzer'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -21,6 +22,10 @@ const nextConfig = {
   },
 }
 
+const withBundleAnalyzer = nextAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 const withMDX = nextMdx({
   // Optionally provide remark and rehype plugins
   options: {
@@ -34,4 +39,4 @@ const withMDX = nextMdx({
   },
 })
 
-export default withMDX(nextConfig)
+export default withBundleAnalyzer(withMDX(nextConfig))
