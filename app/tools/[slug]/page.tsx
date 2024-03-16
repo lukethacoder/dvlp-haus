@@ -1,7 +1,6 @@
-import { Suspense } from 'react'
 import { Metadata } from 'next'
 
-import TOOLS from '@/tools'
+import TOOLS, { TOOL_COMPONENTS } from '@/tools'
 import { isValidToolName } from '@/lib/tools'
 // import { getTimestamp } from '@/lib/git'
 import { cn } from '@/lib/utils'
@@ -60,15 +59,11 @@ export default async function ToolPage({ params }: PageProps) {
   }
 
   const component = TOOLS[slug]
+  const components = TOOL_COMPONENTS[slug]
 
-  const {
-    name,
-    description,
-    component: Component,
-    content: MdxContent,
-  } = component
+  const { name, description } = component
 
-  // const md = slug ? await getMarkdown(slug) : undefined
+  const { component: Component, content: Content } = components
 
   return (
     <div>
@@ -80,16 +75,14 @@ export default async function ToolPage({ params }: PageProps) {
       </header>
 
       <span className='flex flex-col gap-4 p-4'>
-        <Component />
-        {MdxContent && (
+        {Component && <Component />}
+        {Content && (
           <Card className='w-full max-w-4xl'>
             <CardHeader>
               <CardTitle>About</CardTitle>
             </CardHeader>
             <CardContent className='prose'>
-              <Suspense>
-                <MdxContent />
-              </Suspense>
+              <Content />
             </CardContent>
           </Card>
         )}

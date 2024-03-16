@@ -38,7 +38,6 @@ export function AllTools() {
             </li>
           )
         })}
-      <li></li>
     </ul>
   )
 }

@@ -103,11 +103,14 @@ export const isValidToolName = (
 }
 
 export interface ITool {
-  readonly slug: (typeof TOOL_NAMES)[number]
-  readonly name: string
-  readonly description: string
-  readonly category: (typeof CATEGORY_KEYS)[number]
-  readonly openGraphFontSize?: number
+  slug: (typeof TOOL_NAMES)[number]
+  name: string
+  description: string
+  category: (typeof CATEGORY_KEYS)[number]
+  openGraphFontSize?: number
+}
+
+export interface ToolData {
   component: ComponentType<any>
   content?: ComponentType<any>
 }
