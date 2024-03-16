@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
-import TOOLS, { TOOL_COMPONENTS } from '@/tools'
+import { TOOLS } from '@/tools'
+import TOOL_COMPONENTS from '@/tools/components'
 import { isValidToolName } from '@/lib/tools'
 // import { getTimestamp } from '@/lib/git'
 import { cn } from '@/lib/utils'

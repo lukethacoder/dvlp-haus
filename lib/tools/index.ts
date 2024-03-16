@@ -12,7 +12,7 @@ import {
   IconTransform,
   IconProps,
 } from '@tabler/icons-react'
-import TOOLS, { TOOL_NAMES } from '@/tools'
+import { TOOLS, TOOL_NAMES } from '@/tools'
 
 // NOTE: order here determines category order
 export const CATEGORY_KEYS = [

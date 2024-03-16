@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Footer } from '@/components/footer'
 import { getEntries } from '@/lib/ts'
-import TOOLS from '@/tools'
+import { TOOLS } from '@/tools'
 
 export default function OpenGraphDebugPage() {
   if (process.env.NODE_ENV !== 'development') {

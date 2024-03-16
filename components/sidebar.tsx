@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import { CATEGORIES, getToolsByCategory } from '@/lib/tools'
 import { getEntries } from '@/lib/ts'
 
-import TOOLS from '@/tools'
+import { TOOLS } from '@/tools'
 import { buttonVariants } from '@/components/ui/button'
 
 export function Sidebar() {

@@ -2,6 +2,7 @@ import { ReactNode, createElement } from 'react'
 import Link from 'next/link'
 import { codeToHtml } from 'shiki'
 import type { MDXComponents } from 'mdx/types'
+import { highlighter } from './lib/shiki'
 
 function CustomLink(props: { href: string; children: ReactNode }) {
   const { href, ...props2 } = props
@@ -24,7 +25,14 @@ function CustomLink(props: { href: string; children: ReactNode }) {
 async function Code({ children, ...props }: any) {
   const isMultiline = /[\n\r]/.test(children)
 
-  const html = await codeToHtml(children, {
+  // const code = highlighter.codeToHtml('const a = 1', {
+  //   lang: 'javascript',
+  //   theme: 'material-theme-ocean'
+  // })
+
+  const html = await (
+    await highlighter()
+  ).codeToHtml(children, {
     lang: 'typescript',
     theme: 'one-dark-pro',
     transformers: [

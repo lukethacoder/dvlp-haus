@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/command'
 import { Button } from './ui/button'
 
-import TOOLS from '@/tools'
+import { TOOLS } from '@/tools'
 import { NAVIGATION_MENU_ITEMS } from './navigation-menu'
 import { CATEGORIES, getToolsByCategory } from '@/lib/tools'
 import { getEntries } from '@/lib/ts'

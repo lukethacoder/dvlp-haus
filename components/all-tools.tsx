@@ -1,6 +1,6 @@
 import { CATEGORIES, getToolsByCategory } from '@/lib/tools'
 import { getEntries } from '@/lib/ts'
-import TOOLS from '@/tools'
+import { TOOLS } from '@/tools'
 import Link from 'next/link'
 
 export function AllTools() {

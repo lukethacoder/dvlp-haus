@@ -1,5 +1,5 @@
 import { CATEGORIES, isValidCategoryName, isValidToolName } from '@/lib/tools'
-import TOOLS from '@/tools'
+import { TOOLS } from '@/tools'
 import { ImageResponse } from 'next/og'
 
 // Route segment config
