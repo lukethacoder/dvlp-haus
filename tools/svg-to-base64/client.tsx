@@ -1,60 +1,16 @@
 'use client'
 
-import { ChangeEvent, MouseEventHandler, useState } from 'react'
-import { IconCopy } from '@tabler/icons-react'
+import { ChangeEvent, useState } from 'react'
 import DOMPurify from 'dompurify'
 
 import { handleCopyTextEvent } from '@/lib'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
+import { Card, CardHeader } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 import { Textarea } from '@/components/ui/textarea'
+import InputButton from '@/components/input-button'
 import { checkIfValidSvg, encodeSvg } from './utils'
-
-function InputButton({
-  suffix,
-  buttonAriaLabel,
-  onClick,
-}: {
-  suffix?: string
-  buttonAriaLabel: string
-  onClick: MouseEventHandler<HTMLButtonElement>
-}) {
-  return (
-    <>
-      {suffix && (
-        <span className='text-sm text-muted-foreground mr-1'>{suffix}</span>
-      )}
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              type='button'
-              variant='outline'
-              aria-label={buttonAriaLabel}
-              size='icon'
-              className='w-7 h-7'
-              onClick={onClick}
-            >
-              <IconCopy />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{buttonAriaLabel}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    </>
-  )
-}
 
 export function Client() {
   const { toast } = useToast()

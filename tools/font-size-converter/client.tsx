@@ -1,90 +1,21 @@
 'use client'
 
-import { MouseEvent, MouseEventHandler, ReactNode, useReducer } from 'react'
-import { IconCopy } from '@tabler/icons-react'
+import { useReducer } from 'react'
 
-import { copyToClipboard } from '@/lib'
+import { handleCopyTextEvent } from '@/lib'
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+import InputButton from '@/components/input-button'
 import { useToast } from '@/components/ui/use-toast'
 
 import { INITIAL_STATE, reducer } from './reducer'
 import { ConversionTable } from './conversion-table'
 
-function InputButton({
-  suffix,
-  buttonAriaLabel,
-  onClick,
-}: {
-  suffix: string
-  buttonAriaLabel: string
-  onClick: MouseEventHandler<HTMLButtonElement>
-}) {
-  return (
-    <span className='absolute right-1.5 h-full flex items-center'>
-      {suffix && (
-        <span className='text-sm text-muted-foreground mr-1'>{suffix}</span>
-      )}
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              type='button'
-              variant='ghost'
-              aria-label={buttonAriaLabel}
-              size='icon'
-              className='w-7 h-7'
-              onClick={onClick}
-            >
-              <IconCopy />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{buttonAriaLabel}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    </span>
-  )
-}
-
 export function Client() {
   const { toast } = useToast()
   const [componentState, dispatch] = useReducer(reducer, INITIAL_STATE)
-
-  const handleCopyText = (
-    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-    value: string
-  ) => {
-    event.preventDefault()
-    event.stopPropagation()
-
-    copyToClipboard(value)
-
-    toast({
-      title: 'Copied to clipboard',
-      description: (
-        <p>
-          Copied <span className='text-primary'>{value}</span> to clipboard
-        </p>
-      ),
-    })
-  }
 
   return (
     <>
@@ -118,7 +49,11 @@ export function Client() {
                     suffix='px'
                     buttonAriaLabel='Copy px value'
                     onClick={(event) =>
-                      handleCopyText(event, `${componentState.px}px`)
+                      handleCopyTextEvent(
+                        toast,
+                        event,
+                        `${componentState.px}px`
+                      )
                     }
                   />
                 </span>
@@ -149,7 +84,11 @@ export function Client() {
                     suffix='em'
                     buttonAriaLabel='Copy em value'
                     onClick={(event) =>
-                      handleCopyText(event, `${componentState.em}em`)
+                      handleCopyTextEvent(
+                        toast,
+                        event,
+                        `${componentState.em}em`
+                      )
                     }
                   />
                 </span>
@@ -180,7 +119,11 @@ export function Client() {
                     suffix='rem'
                     buttonAriaLabel='Copy rem value'
                     onClick={(event) =>
-                      handleCopyText(event, `${componentState.rem}rem`)
+                      handleCopyTextEvent(
+                        toast,
+                        event,
+                        `${componentState.rem}rem`
+                      )
                     }
                   />
                 </span>
@@ -211,7 +154,8 @@ export function Client() {
                     suffix={componentState.customExtensionText || 'none'}
                     buttonAriaLabel='Copy custom extension value'
                     onClick={(event) =>
-                      handleCopyText(
+                      handleCopyTextEvent(
+                        toast,
                         event,
                         `${componentState.customExtension}${componentState.customExtensionText}`
                       )
