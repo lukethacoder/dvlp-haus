@@ -7,9 +7,11 @@ import { isValidToolName } from '@/lib/tools'
 import { cn } from '@/lib/utils'
 import { SEO_TITLE_EXTENSION, SEO_DEFAULTS } from '@/lib/constants'
 
-import { Claps } from '@/components/claps'
 import { buttonVariants } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardHeader } from '@/components/ui/card'
+import Views from '@/components/views'
+import { getPaths } from '@/lib/api/goatcounter/paths'
+import { Suspense } from 'react'
 
 export async function generateStaticParams() {
   return Object.values(TOOLS).map((tool) => ({
@@ -62,9 +64,20 @@ export default async function ToolPage({ params }: PageProps) {
   const component = TOOLS[slug]
   const components = TOOL_COMPONENTS[slug]
 
-  const { name, description } = component
+  const { name, description, goatPathId } = component
+  let _goatPathId = goatPathId
 
   const { component: Component, content: Content } = components
+
+  if (!goatPathId) {
+    const paths = await getPaths()
+
+    // prefer `/` prefixed path, but take non `/` prefixed path if found
+    _goatPathId = paths.find((item) => item.path === `/tools/${slug}`)?.id
+    if (!_goatPathId) {
+      _goatPathId = paths.find((item) => item.path === `tools/${slug}`)?.id
+    }
+  }
 
   return (
     <div>
@@ -79,18 +92,25 @@ export default async function ToolPage({ params }: PageProps) {
         {Component && <Component />}
         {Content && (
           <Card className='w-full max-w-4xl'>
-            <CardHeader>
-              <CardTitle>About</CardTitle>
-            </CardHeader>
-            <CardContent className='prose'>
+            <CardHeader className='prose'>
+              <h2 id='#about'>
+                <a href='#about' className='anchor'></a>
+                About
+              </h2>
               <Content />
-            </CardContent>
+            </CardHeader>
           </Card>
         )}
       </span>
 
       <div className='w-full p-4 border-t flex gap-4 items-center justify-between'>
-        <Claps pageKey={slug} />
+        <span>
+          {_goatPathId && (
+            <Suspense>
+              <Views pathId={_goatPathId} />
+            </Suspense>
+          )}
+        </span>
         <span className='flex items-center gap-4'>
           {/* {timestamp && (
             <span className='text-sm mt-0 mb-0 text-muted-foreground'>

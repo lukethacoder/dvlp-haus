@@ -41,9 +41,11 @@
     "react-dom": "^18",
     "react-google-recaptcha": "^3.1.0",
     "remark-gfm": "^4.0.0",
+    "swr": "^2.2.5",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "wkx": "^0.5.0"
+    "wkx": "^0.5.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.3",

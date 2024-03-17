@@ -7,6 +7,37 @@ import image_20190106 from '@/public/change-log/2019-01-06.jpg'
 
 export const CHANGE_LOG_CONTENT: { date: Date; content: ReactNode }[] = [
   {
+    date: new Date('2024-03-17'),
+    content: (
+      <>
+        <h2>WKB to GeoJSON Tool / Clean up Tool API</h2>
+
+        <ul>
+          <li>
+            Add a new tool,{' '}
+            <Link href='/tools/wkb-to-geojson'>WKB to GeoJSON</Link>
+          </li>
+          <li>
+            Clean up Tools API. Allows dynamic components to be loaded
+            separately from the main Tools config. Helps reduce bundle size when
+            generating dynamic Open Graph Images.
+          </li>
+          <li>
+            Switch out Vercel KV store counter to use{' '}
+            <a
+              href='https://www.goatcounter.com/help/api'
+              target='_blank'
+              rel='nofollow noreferrer'
+            >
+              goatcounter API
+            </a>
+            .
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
     date: new Date('2024-02-03'),
     content: (
       <>

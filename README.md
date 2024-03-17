@@ -35,13 +35,10 @@ pnpm install
 
 **Edit the Environment variables.**
 
-Vercel KV Redis
-
 ```env
-KV_URL="redis://default:1234567890@abcdefgh-ijklm-12345.upstash.io:12345"
-KV_REST_API_URL="https://abcdefgh-ijklm-12345.upstash.io"
-KV_REST_API_TOKEN="abcdefghijklmnopqrstuvwxyz="
-KV_REST_API_READ_ONLY_TOKEN="abcdefghijklmnopqrstuvwxyz="
+NEXT_PUBLIC_CLARITY_CODE=abcdefghij
+NEXT_PUBLIC_GOAT_COUNTER=stats.your.domain
+GOAT_COUNTER_AUTH_TOKEN=12345678901234567890123456789012abcdefghijklmopq
 ```
 
 **Start the site in `dev` mode.**
@@ -85,6 +82,7 @@ const CONFIG: ITool = {
   description:
     'Short description about the tool. Used for Card displays and SEO.',
   category: 'math', // check the ./lib/tools/index.ts file for allowed categories, and/or allow TS to tell you
+  goatPathId: 1234, // optional goatcounter path id (will not be known for new tools yet to have had page hits)
 }
 
 export default CONFIG
