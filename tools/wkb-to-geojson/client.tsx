@@ -45,6 +45,7 @@ export function Client() {
 
   const handleEditorChangeWkb = async (value: string) => {
     setWkbError(undefined)
+    setWkb(value)
 
     try {
       const twkbBuffer = Buffer.from(value, 'hex')
@@ -59,6 +60,7 @@ export function Client() {
 
   const handleEditorChangeGeoJson = async (value: string) => {
     setGeoJsonError(undefined)
+    setGeoJson(value)
 
     try {
       const geometry = wkx.Geometry.parseGeoJSON(JSON.parse(value))
