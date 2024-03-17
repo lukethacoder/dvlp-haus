@@ -107,6 +107,8 @@ export interface ITool {
   name: string
   description: string
   category: (typeof CATEGORY_KEYS)[number]
+  // goatcounter page_id
+  goatPathId?: number
   openGraphFontSize?: number
 }
 

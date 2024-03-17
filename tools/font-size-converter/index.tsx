@@ -5,6 +5,7 @@ const CONFIG: ITool = {
   name: 'Font Size Converter',
   description: 'Convert between px, rem, em or custom font size types.',
   category: 'converters',
+  goatPathId: 27168299,
 }
 
 export default CONFIG

@@ -5,6 +5,7 @@ const CONFIG: ITool = {
   name: 'SVG to base64',
   description: 'Convert SVG markup to Base64. Handy to convert SVGs to CSS.',
   category: 'converters',
+  goatPathId: 27240257,
 }
 
 export default CONFIG
