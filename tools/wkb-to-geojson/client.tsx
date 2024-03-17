@@ -106,7 +106,7 @@ export function Client() {
                     className='top-2 right-2 h-auto'
                     buttonAriaLabel='Copy WKB string'
                     onClick={(event) =>
-                      handleCopyTextEvent(toast, event, 'WKB string')
+                      handleCopyTextEvent(toast, event, wkb, 'WKB string')
                     }
                   />
                 </span>
@@ -130,7 +130,12 @@ export function Client() {
                     className='top-2 right-2 h-auto'
                     buttonAriaLabel='Copy GeoJSON string'
                     onClick={(event) =>
-                      handleCopyTextEvent(toast, event, 'GeoJSON string')
+                      handleCopyTextEvent(
+                        toast,
+                        event,
+                        geoJson,
+                        'GeoJSON string'
+                      )
                     }
                   />
                 </span>
