@@ -3,7 +3,10 @@
 WKB is a standard method for representing geometric objects such as `points`, `lines`, and `polygons` in binary form.
 It's commonly used in the field of Geographic Information Systems (GIS) and spatial databases.
 
-This tool uses the <a href='https://github.com/cschwarz/wkx' target='_blank' rel='nofollow noreferrer'>wkx</a> package to handle conversions from WKB to GeoJSON.
+This tool uses the <a href='https://github.com/cschwarz/wkx' target='_blank' rel='nofollow noreferrer'>wkx</a> package for conversions.
+
+
+### WKB to GeoJSON
 
 ```ts
 import wkx from 'wkx'
@@ -12,4 +15,14 @@ import wkx from 'wkx'
 const twkbBuffer = Buffer.from(wkbValue, 'hex')
 const geometry = wkx.Geometry.parse(twkbBuffer)
 const geoJson = geometry.toGeoJSON()
+```
+
+### GeoJSON to WKB
+
+```ts
+import wkx from 'wkx'
+
+// geoJsonValue is your input JSON
+const geometry = wkx.Geometry.parseGeoJSON(geoJsonValue)
+const wkbString = geometry.toWkb().toString('hex')
 ```

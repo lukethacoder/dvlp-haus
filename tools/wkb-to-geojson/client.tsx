@@ -1,99 +1,83 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import wkx from 'wkx'
 
 import { handleCopyTextEvent } from '@/lib'
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { Card, CardHeader } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import InputButton from '@/components/input-button'
 import { useToast } from '@/components/ui/use-toast'
 import InputError from '@/components/ui/inputError'
-import Editor from '@/components/editor'
-import { Monaco } from '@monaco-editor/react'
-import { editor } from 'monaco-editor'
+import { Button } from '@/components/ui/button'
 
-// editor.setValue(defaultValue)
+const EXAMPLE_GEOJSON: string = JSON.stringify(
+  {
+    type: 'GeometryCollection',
+    geometries: [
+      {
+        type: 'Point',
+        coordinates: [4, 6],
+      },
+      {
+        type: 'LineString',
+        coordinates: [
+          [4, 6],
+          [7, 10],
+        ],
+      },
+    ],
+  },
+  undefined,
+  2
+)
 
 export function Client() {
   const { toast } = useToast()
 
-  const [inputValue, setInputValue] = useState<string>('')
-  const [inputValueError, setInputValueError] = useState<string | undefined>()
+  const [wkb, setWkb] = useState<string>('')
+  const [wkbError, setWkbError] = useState<string | undefined>()
 
   const [geoJson, setGeoJson] = useState<string>('')
   const [geoJsonError, setGeoJsonError] = useState<string | undefined>()
 
-  const wkbEditorRef = useRef<editor.IStandaloneCodeEditor | null>(null)
-  const geoJsonEditorRef = useRef<editor.IStandaloneCodeEditor | null>(null)
-
-  function handleWkbEditorDidMount(
-    editor: editor.IStandaloneCodeEditor,
-    _monaco: Monaco
-  ) {
-    wkbEditorRef.current = editor
-  }
-
-  function handleGeoJsonEditorDidMount(
-    editor: editor.IStandaloneCodeEditor,
-    _monaco: Monaco
-  ) {
-    geoJsonEditorRef.current = editor
-  }
-
-  const handleEditorChangeWkb = async (value) => {
-    setInputValueError(undefined)
+  const handleEditorChangeWkb = async (value: string) => {
+    setWkbError(undefined)
 
     try {
       const twkbBuffer = Buffer.from(value, 'hex')
       const geometry = wkx.Geometry.parse(twkbBuffer)
 
-      const geoJson = geometry.toGeoJSON()
-
-      if (geoJsonEditorRef.current !== null) {
-        const currentValue = geoJsonEditorRef.current.getValue()
-        const geoJsonValue = JSON.stringify(geoJson, undefined, 2)
-        if (currentValue !== geoJsonValue) {
-          geoJsonEditorRef.current.setValue(geoJsonValue)
-        }
-      }
+      setGeoJson(JSON.stringify(geometry.toGeoJSON(), undefined, 2))
     } catch (error) {
       console.warn('Error ', error)
-      setInputValueError(`${error}`)
+      setWkbError(`${error}`)
     }
-
-    setIsSettingWkb(false)
   }
 
-  const handleEditorChangeGeoJson = async (value) => {
+  const handleEditorChangeGeoJson = async (value: string) => {
     setGeoJsonError(undefined)
 
     try {
       const geometry = wkx.Geometry.parseGeoJSON(JSON.parse(value))
 
-      // setInputValue(geometry.toWkb().toString('hex'))
-      const wkbValue = geometry.toWkb().toString('hex')
-
-      if (wkbEditorRef.current !== null) {
-        const currentValue = wkbEditorRef.current.getValue()
-
-        // check the new value has changed
-        if (currentValue !== wkbValue) {
-          wkbEditorRef.current.setValue(wkbValue)
-        }
-      }
+      setWkb(geometry.toWkb().toString('hex'))
     } catch (error) {
       console.warn('Error ', error)
       setGeoJsonError(`${error}`)
     }
+  }
+
+  const handleSetExampleValues = () => {
+    setGeoJson(EXAMPLE_GEOJSON)
+    handleEditorChangeGeoJson(EXAMPLE_GEOJSON)
+  }
+
+  const handleClear = () => {
+    setWkb('')
+    setGeoJson('')
   }
 
   return (
@@ -102,43 +86,20 @@ export function Client() {
         <CardHeader>
           <form className='w-full items-center'>
             <div className='w-full grid items-center gap-y-4 gap-x-6'>
-              {/* <div className='flex flex-col'>
+              <div className='flex flex-col'>
                 <Label className='mb-2' htmlFor='wkb'>
                   WKB (Well Known Binary)
                 </Label>
                 <span className='flex flex-col relative'>
                   <Textarea
                     id='wkb'
-                    value={inputValue}
+                    value={wkb}
                     rows={6}
-                    onChange={handleInputChange}
-                  />
-                  {inputValueError && (
-                    <InputError>{inputValueError}</InputError>
-                  )}
-                  <InputButton
-                    className='top-2 right-2 h-auto'
-                    buttonAriaLabel='Copy WKB string'
-                    onClick={(event) =>
-                      handleCopyTextEvent(toast, event, 'WKB string')
+                    onChange={(event) =>
+                      handleEditorChangeWkb(event.target.value)
                     }
                   />
-                </span>
-              </div> */}
-              {/* <div className='flex flex-col'>
-                <Label className='mb-2' htmlFor='wkb'>
-                  WKB (Well Known Binary)
-                </Label>
-                <span className='flex flex-col relative'>
-                  <Textarea
-                    id='wkb'
-                    value={inputValue}
-                    rows={6}
-                    onChange={handleInputChange}
-                  />
-                  {inputValueError && (
-                    <InputError>{inputValueError}</InputError>
-                  )}
+                  {wkbError && <InputError>{wkbError}</InputError>}
                   <InputButton
                     className='top-2 right-2 h-auto'
                     buttonAriaLabel='Copy WKB string'
@@ -158,7 +119,9 @@ export function Client() {
                     id='geoJsonValue'
                     value={geoJson}
                     rows={6}
-                    onChange={handleInputChangeGeoJson}
+                    onChange={(event) =>
+                      handleEditorChangeGeoJson(event.target.value)
+                    }
                   />
                   {geoJsonError && <InputError>{geoJsonError}</InputError>}
                   <InputButton
@@ -169,34 +132,19 @@ export function Client() {
                     }
                   />
                 </span>
-              </div> */}
-
-              <div className='w-full flex flex-col'>
-                <Label className='mb-2' htmlFor='geoJsonValue'>
-                  WKB
-                </Label>
-                <span className='flex flex-col relative'>
-                  <Editor
-                    height='480px'
-                    defaultLanguage='text'
-                    onChange={handleEditorChangeWkb}
-                    onMount={handleWkbEditorDidMount}
-                  />
-                </span>
               </div>
 
-              <div className='w-full flex flex-col'>
-                <Label className='mb-2' htmlFor='geoJsonValue'>
-                  GeoJSON
-                </Label>
-                <span className='flex flex-col relative'>
-                  <Editor
-                    height='480px'
-                    defaultLanguage='json'
-                    onChange={handleEditorChangeGeoJson}
-                    onMount={handleGeoJsonEditorDidMount}
-                  />
-                </span>
+              <div className='flex gap-2'>
+                <Button
+                  variant='secondary'
+                  type='button'
+                  onClick={handleSetExampleValues}
+                >
+                  Set example values
+                </Button>
+                <Button variant='secondary' type='button' onClick={handleClear}>
+                  Clear
+                </Button>
               </div>
             </div>
           </form>
